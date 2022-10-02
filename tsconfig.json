@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "esnext", // 编译后生成js的版本（ES5、ES6、ES2015、ES2016、ES2017、ESNext）
+    "module": "esnext", // 编译后模块系统（ESM、CommonJS、AMD、esnex...）
+    "strict": true // 启用所有严格类型检查选项
+    // "lib": ["dom", "dom.iterable", "esnext"], // 指定项目中依赖的库（如：DOM相关操作使用dom）
+    // "alwaysStrict": true, // 编译后的文件，是否开启严格模式( import、export本身就是严格模式)
+    // "noImplicitAny": false, // 在表达式和声明上有隐含的 any类型时报错
+    // "noImplicitThis": false // 当this表达式的值为 any类型的时候报错
+    // "strictNullChecks": true, // 严格检查空值
+    // "noEmit": true, // 不生成编译后的文件
+    // "noEmitOnError": true, // 有报错时，不生成编译后的文件
+    // "removeComments": true, // 是否去掉注释
+    // "checkJs": true, // 检查js是否符合ts规范
+    // "allowJs": true, // 是否允许编译 js 文件
+    // "outDir": "./dist", // 指定输出的"文件夹"
+    // "outFile": "./dist/app.js" // 所有文件编译后合成一个app.js文件（module为amd、system模式下使用）
+  }
+  // "files": ["a.ts", "b.ts", "c.ts"], // 指定编译”文件“，不受exclude影响
+  // "include": ["src/**/*"], // 指定编译”文件夹“（默认为根目录）
+  // "exclude": ["node_modules", "dist", "build"], // 禁止某些文件被编译，过滤include（默认node_modules...）
+  // "extends": "./base.json" // 继承base.json文件中的配置
+}

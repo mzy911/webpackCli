@@ -1,0 +1,3 @@
+# 忽略使用eslit规则检查文件
+dist
+node_modules
