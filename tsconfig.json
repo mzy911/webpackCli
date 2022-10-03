@@ -15,9 +15,9 @@
     // "allowJs": true, // 是否允许编译 js 文件
     // "outDir": "./dist", // 指定输出的"文件夹"
     // "outFile": "./dist/app.js" // 所有文件编译后合成一个app.js文件（module为amd、system模式下使用）
-  }
+  },
   // "files": ["a.ts", "b.ts", "c.ts"], // 指定编译”文件“，不受exclude影响
-  // "include": ["src/**/*"], // 指定编译”文件夹“（默认为根目录）
-  // "exclude": ["node_modules", "dist", "build"], // 禁止某些文件被编译，过滤include（默认node_modules...）
+  "include": ["src/**/*.ts"], // 指定编译”文件夹“（默认为根目录）
+  "exclude": ["node_modules", "dist"] // 禁止某些文件被编译，过滤include（默认node_modules...）
   // "extends": "./base.json" // 继承base.json文件中的配置
 }
