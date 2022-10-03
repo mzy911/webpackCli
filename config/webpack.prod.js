@@ -29,6 +29,9 @@ module.exports = {
 
   mode: 'production',
 
+  // 能检测到行、列的报错
+  // devtool: 'source-map',
+
   module: {
     rules: [
       // 处理 ts

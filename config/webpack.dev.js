@@ -19,7 +19,9 @@ module.exports = {
   },
 
   mode: 'development',
-  //   devtool: 'cheap-module-eval-source-map',
+
+  // 能检测到行的报错
+  devtool: 'cheap-module-source-map',
 
   // 开发服务器：webpack-dev-server（内存中）
   devServer: serverConfig.config,
