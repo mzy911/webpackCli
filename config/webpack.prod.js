@@ -1,5 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 const ESLintPlugin = require('eslint-webpack-plugin')
 const stylConfig = require('./baseConfig/webpack.style.js')
 const scriptConfig = require('./baseConfig/webpack.script.js')
@@ -57,6 +59,12 @@ module.exports = {
     // 配置eslint：webpack4中使用loader、webpack5中使用plugin
     new ESLintPlugin({
       context: path.resolve(__dirname, '../src')
+    }),
+
+    // 将 CSS 从你的 bundle 中分离出来
+    new MiniCssExtractPlugin({
+      filename: 'static/css/[name].[hash:8].css',
+      chunkFilename: 'static/css/[id].[hash:8].css'
     })
   ],
 

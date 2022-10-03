@@ -1,15 +1,23 @@
+/**
+ * 1、默认css被一块打包bundle中，混入js中
+ * 2、将css 打包成单独的文件
+ * 3、不再使用 style-loader
+ * 4、需要配置在 plugins 中调用：new MiniCssExtractPlugin(options)
+ */
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 module.exports = {
   config: [
     // 处理、解析css文件
     {
       test: /\.css$/,
-      use: ['style-loader', 'css-loader']
+      use: [MiniCssExtractPlugin.loader, 'css-loader']
     },
     // 解析、处理 less 文件
     {
       test: /\.less$/,
       use: [
-        'style-loader', // 将js中css通过创建style标签添加到html中
+        MiniCssExtractPlugin.loader,
         'css-loader', // 将css资源编译到common.js模块中
         {
           loader: 'postcss-loader',
@@ -32,7 +40,7 @@ module.exports = {
     {
       test: /\.s[ac]ss$/,
       use: [
-        'style-loader', // 将js中css通过创建style标签添加到html中
+        MiniCssExtractPlugin.loader,
         'css-loader', // 将css资源编译到common.js模块中
         {
           loader: 'postcss-loader',

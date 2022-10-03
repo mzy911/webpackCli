@@ -19,6 +19,7 @@ specifiers:
   json5-loader: ^4.0.1
   less: ^4.1.3
   less-loader: ^11.0.0
+  mini-css-extract-plugin: ^2.6.1
   mini-svg-data-uri: ^1.4.4
   postcss: ^8.4.16
   postcss-loader: ^7.0.1
@@ -52,6 +53,7 @@ devDependencies:
   json5-loader: 4.0.1_webpack@5.74.0
   less: 4.1.3
   less-loader: 11.0.0_less@4.1.3+webpack@5.74.0
+  mini-css-extract-plugin: 2.6.1_webpack@5.74.0
   mini-svg-data-uri: 1.4.4
   postcss: 8.4.17
   postcss-loader: 7.0.1_sat2ilddhdkv6huwh4d4inpfry
@@ -4004,6 +4006,16 @@ packages:
   /mimic-fn/2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
+    dev: true
+
+  /mini-css-extract-plugin/2.6.1_webpack@5.74.0:
+    resolution: {integrity: sha512-wd+SD57/K6DiV7jIR34P+s3uckTRuQvx0tKPcvjFlrEylk6P4mQ2KSWk1hblj1Kxaqok7LogKOieygXqBczNlg==}
+    engines: {node: '>= 12.13.0'}
+    peerDependencies:
+      webpack: ^5.0.0
+    dependencies:
+      schema-utils: 4.0.0
+      webpack: 5.74.0_webpack-cli@4.10.0
     dev: true
 
   /mini-svg-data-uri/1.4.4:
