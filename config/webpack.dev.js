@@ -1,10 +1,8 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ESLintPlugin = require('eslint-webpack-plugin')
 const stylConfig = require('./baseConfig/webpack.style.js')
 const scriptConfig = require('./baseConfig/webpack.script.js')
 const staticConfig = require('./baseConfig/webpack.static')
 const serverConfig = require('./baseConfig/webpack.server')
+const pluginConfig = require('./baseConfig/webpack.plugin')
 
 module.exports = {
   // 相对路径：开发环境下，在虚拟内存中运行与src并排 (并非相对于当前目录)
@@ -50,24 +48,8 @@ module.exports = {
     ]
   },
 
-  plugins: [
-    // 打包前清除dist目录下文件，webpack4中配置方式
-    // new CleanWebpackPlugin(),
-
-    // 利用html模版动态引入webpack打好的包
-    new HtmlWebpackPlugin({
-      // 开发环境下修改："public/index.html" ==> "../public/index.html"
-      template: path.resolve(__dirname, '../public/index.html')
-    }),
-
-    // 配置eslint：webpack4中使用loader、webpack5中使用plugin
-    new ESLintPlugin({
-      // 开发环境下修改："src" ==> "../src"
-      context: path.resolve(__dirname, '../src'),
-      cache: true,
-      cacheLocation: path.resolve(__dirname, '../node_modules/.cache/eslintCatch') // 自定义缓存路径
-    })
-  ],
+  // 使用插件
+  plugins: [...pluginConfig.config],
 
   // 解析模块规则
   resolve: {

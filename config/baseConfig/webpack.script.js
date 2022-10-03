@@ -1,4 +1,6 @@
 const path = require('path')
+const os = require('os')
+const threads = os.cpus().length
 
 module.exports = {
   config: [
@@ -6,16 +8,34 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       include: path.resolve(__dirname, '../../src'),
-      loader: 'babel-loader',
-      // babel 相关配置写到 .babelrc.js
-      options: {
-        cacheDirectory: true, // 开启babel缓存(默认缓存路径：node_modules/.catch...)
-        cacheCompression: false // 关闭缓存文件压缩
-      }
+      use: [
+        // 开启多线程打包
+        {
+          loader: 'thread-loader',
+          options: {
+            works: threads // 线程数量
+          }
+        },
+        {
+          loader: 'babel-loader',
+          // babel 相关配置写到 .babelrc.js
+          options: {
+            cacheDirectory: true, // 开启babel缓存(默认缓存路径：node_modules/.catch...)
+            cacheCompression: false // 关闭缓存文件压缩
+          }
+        }
+      ]
     },
     {
       test: /\.ts$/,
       use: [
+        // 开启多线程打包
+        {
+          loader: 'thread-loader',
+          options: {
+            works: threads // 线程数量
+          }
+        },
         {
           // 指定加载器
           loader: 'babel-loader',

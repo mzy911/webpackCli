@@ -1,12 +1,11 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
-const ESLintPlugin = require('eslint-webpack-plugin')
 const stylConfig = require('./baseConfig/webpack.style')
 const scriptConfig = require('./baseConfig/webpack.script')
 const staticConfig = require('./baseConfig/webpack.static')
 const optimizationConfig = require('./baseConfig/webpack.optimization')
+const pluginConfig = require('./baseConfig/webpack.plugin')
+const os = require('os')
+const threads = os.cpus().length
 
 module.exports = {
   // 相对路径：生产模式下，生成dist目录与src平级
@@ -56,28 +55,7 @@ module.exports = {
     ]
   },
 
-  plugins: [
-    // 打包前清除dist目录下文件，webpack4中配置方式
-    // new CleanWebpackPlugin(),
-
-    // 利用html模版动态引入webpack打好的包
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../public/index.html')
-    }),
-
-    // 配置eslint：webpack4中使用loader、webpack5中使用plugin
-    new ESLintPlugin({
-      context: path.resolve(__dirname, '../src'),
-      cache: true,
-      cacheLocation: path.resolve(__dirname, '../node_modules/.cache/eslintCatch') // 自定义缓存路径
-    }),
-
-    // 将 CSS 从你的 bundle 中分离出来
-    new MiniCssExtractPlugin({
-      filename: 'static/css/[name].[hash:8].css',
-      chunkFilename: 'static/css/[id].[hash:8].css'
-    })
-  ],
+  plugins: [...pluginConfig.config],
 
   // 解析模块规则
   resolve: {
