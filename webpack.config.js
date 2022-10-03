@@ -5,6 +5,7 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 const stylConfig = require('./webpack.style.js')
 const scriptConfig = require('./webpack.script.js')
 const staticConfig = require('./webpack.static')
+const serverConfig = require('./webpack.server')
 
 module.exports = {
   entry: './src/index.js',
@@ -26,6 +27,9 @@ module.exports = {
 
   mode: 'production',
   //   devtool: 'cheap-module-eval-source-map',
+
+  // 开发服务器：webpack-dev-server（内存中）
+  devServer: serverConfig.config,
 
   module: {
     rules: [
