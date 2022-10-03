@@ -34,19 +34,24 @@ module.exports = {
 
   module: {
     rules: [
-      // 处理 ts
-      ...scriptConfig.config,
-
-      // 处理样式：css、less、sass
-      ...stylConfig.config,
-
-      // 处理静态资源
-      ...staticConfig.config,
-
-      // 以json5的文件形式给json文件添加注释
       {
-        test: /\.json5$/,
-        loader: 'json5-loader'
+        // 让每个文件直接找到对应的loader，不用一个个对比
+        oneOf: [
+          // 处理 ts
+          ...scriptConfig.config,
+
+          // 处理样式：css、less、sass
+          ...stylConfig.config,
+
+          // 处理静态资源
+          ...staticConfig.config,
+
+          // 以json5的文件形式给json文件添加注释
+          {
+            test: /\.json5$/,
+            loader: 'json5-loader'
+          }
+        ]
       }
     ]
   },
