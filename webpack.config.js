@@ -52,7 +52,7 @@ module.exports = {
 
     // 利用html模版动态引入webpack打好的包
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: path.resolve(__dirname, 'public/index.html')
     }),
 
     // 配置eslint：webpack4中使用loader、webpack5中使用plugin

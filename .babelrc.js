@@ -25,7 +25,7 @@ module.exports = {
         useBuiltIns: 'usage' // 按需引入
 
         // 设置为true时，它会尽可能的将ES6+代码转化为ES5标准代码
-        loose: true
+        // loose: true
       }
     ]
   ]
