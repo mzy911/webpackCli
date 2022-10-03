@@ -1,6 +1,13 @@
 module.exports = {
   config: [
     {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader'
+      // options配置写到 .babelrc.js
+      // options: {}
+    },
+    {
       test: /\.ts$/,
       use: [
         {

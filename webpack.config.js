@@ -26,6 +26,7 @@ module.exports = {
 
   mode: 'production',
   //   devtool: 'cheap-module-eval-source-map',
+
   module: {
     rules: [
       // 处理 ts
@@ -44,6 +45,7 @@ module.exports = {
       }
     ]
   },
+
   plugins: [
     // 打包前清除dist目录下文件，webpack4中配置方式
     // new CleanWebpackPlugin(),
