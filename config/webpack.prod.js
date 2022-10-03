@@ -3,9 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const ESLintPlugin = require('eslint-webpack-plugin')
-const stylConfig = require('./baseConfig/webpack.style.js')
-const scriptConfig = require('./baseConfig/webpack.script.js')
+const stylConfig = require('./baseConfig/webpack.style')
+const scriptConfig = require('./baseConfig/webpack.script')
 const staticConfig = require('./baseConfig/webpack.static')
+const optimizationConfig = require('./baseConfig/webpack.optimization')
 
 module.exports = {
   // 相对路径：生产模式下，生成dist目录与src平级
@@ -77,5 +78,10 @@ module.exports = {
     alias: {
       '@': '/src/'
     }
+  },
+
+  // webpack打包优化
+  optimization: {
+    ...optimizationConfig.config
   }
 }
