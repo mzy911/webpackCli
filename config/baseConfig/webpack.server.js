@@ -2,7 +2,21 @@ module.exports = {
   config: {
     host: 'localhost',
     port: 3000,
-    open: true,
+    open: false,
+
+    /**
+     * 模块热更新(默认为true)
+     * 1、hot为false
+     *    a、css、js的 '任何改动'，整个项目重新打包
+     *    b、浏览器刷新整个页面
+     * 2、hot为true
+     *    a、改动css，会实现"热更新"(局部更新)
+     *    b、改动js依然会重新打包整个项目、刷新浏览器
+     *    c、手动实现"热更新"：module.hot.accept('@/js/a.js', callback)
+     *    d、vue、react"热更新"：vue-loader、react-hot-loader
+     * 3、webpack4中还需要使用 new webpack.HotModuleReplacementPlugin() 插件
+     */
+    hot: true,
 
     // https: true,
     // https: { // 使用自签名证书
