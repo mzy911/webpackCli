@@ -63,7 +63,9 @@ module.exports = {
     // 配置eslint：webpack4中使用loader、webpack5中使用plugin
     new ESLintPlugin({
       // 开发环境下修改："src" ==> "../src"
-      context: path.resolve(__dirname, '../src')
+      context: path.resolve(__dirname, '../src'),
+      cache: true,
+      cacheLocation: path.resolve(__dirname, '../node_modules/.cache/eslintCatch') // 自定义缓存路径
     })
   ],
 

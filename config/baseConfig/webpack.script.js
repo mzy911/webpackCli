@@ -6,9 +6,12 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       include: path.resolve(__dirname, '../../src'),
-      loader: 'babel-loader'
-      // options配置写到 .babelrc.js
-      // options: {}
+      loader: 'babel-loader',
+      // babel 相关配置写到 .babelrc.js
+      options: {
+        cacheDirectory: true, // 开启babel缓存(默认缓存路径：node_modules/.catch...)
+        cacheCompression: false // 关闭缓存文件压缩
+      }
     },
     {
       test: /\.ts$/,
@@ -17,6 +20,9 @@ module.exports = {
           // 指定加载器
           loader: 'babel-loader',
           options: {
+            cacheDirectory: true, // 开启babel缓存
+            cacheCompression: false, // 关闭缓存文件压缩
+
             // 设置预定义环境
             presets: [
               [

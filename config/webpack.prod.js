@@ -67,7 +67,9 @@ module.exports = {
 
     // 配置eslint：webpack4中使用loader、webpack5中使用plugin
     new ESLintPlugin({
-      context: path.resolve(__dirname, '../src')
+      context: path.resolve(__dirname, '../src'),
+      cache: true,
+      cacheLocation: path.resolve(__dirname, '../node_modules/.cache/eslintCatch') // 自定义缓存路径
     }),
 
     // 将 CSS 从你的 bundle 中分离出来
