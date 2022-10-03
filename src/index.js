@@ -1,7 +1,6 @@
 import './style/index.less'
 import { a } from './m1'
 
-// 外部导入文件
 console.log('m', a)
 
 // 对象
