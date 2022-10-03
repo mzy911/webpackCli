@@ -9,6 +9,7 @@ const serverConfig = require('./webpack.server')
 module.exports = {
   // 相对路径：开发环境下，在虚拟内存中运行与src并排 (并非相对于当前目录)
   entry: './src/index.js',
+
   output: {
     // 开发环境下没有输出文件
     path: undefined,
@@ -17,7 +18,7 @@ module.exports = {
     filename: 'static/js/main.js'
   },
 
-  mode: 'production',
+  mode: 'development',
   //   devtool: 'cheap-module-eval-source-map',
 
   // 开发服务器：webpack-dev-server（内存中）

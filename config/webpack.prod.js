@@ -8,10 +8,11 @@ const staticConfig = require('./webpack.static')
 const serverConfig = require('./webpack.server')
 
 module.exports = {
+  // 相对路径：生产模式下，生成dist目录与src平级
   entry: './src/index.js',
   output: {
-    // 所有文件的打包目录
-    path: path.resolve(__dirname, 'dist'),
+    // 绝对路径："dist" ==> "../dist"
+    path: path.resolve(__dirname, '../dist'),
 
     // 入口文件的打包名称
     filename: 'static/js/app.js',
@@ -21,15 +22,11 @@ module.exports = {
       arrowFunction: false
     },
 
-    // 打包前清除dist目录下文件，等同于CleanWebpackPlugin
+    // 打包前清除dist目录下文件(等同于CleanWebpackPlugin)
     clean: true
   },
 
   mode: 'production',
-  //   devtool: 'cheap-module-eval-source-map',
-
-  // 开发服务器：webpack-dev-server（内存中）
-  devServer: serverConfig.config,
 
   module: {
     rules: [
@@ -56,12 +53,12 @@ module.exports = {
 
     // 利用html模版动态引入webpack打好的包
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public/index.html')
+      template: path.resolve(__dirname, '../public/index.html')
     }),
 
     // 配置eslint：webpack4中使用loader、webpack5中使用plugin
     new ESLintPlugin({
-      context: path.resolve(__dirname, 'src')
+      context: path.resolve(__dirname, '../src')
     })
   ],
 
