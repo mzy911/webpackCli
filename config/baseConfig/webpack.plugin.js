@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const os = require('os')
-const threads = os.cpus().length // 获取cpu的个数，每个cpu启动时间大概为600ms
+const threads = os.cpus().length - 1 // 获取cpu的个数，每个cpu启动时间大概为600ms
 
 module.exports = {
   config: [

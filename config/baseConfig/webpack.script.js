@@ -1,6 +1,6 @@
 const path = require('path')
 const os = require('os')
-const threads = os.cpus().length
+const threads = os.cpus().length - 1
 
 module.exports = {
   config: [

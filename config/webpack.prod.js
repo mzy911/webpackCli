@@ -4,8 +4,6 @@ const scriptConfig = require('./baseConfig/webpack.script')
 const staticConfig = require('./baseConfig/webpack.static')
 const optimizationConfig = require('./baseConfig/webpack.optimization')
 const pluginConfig = require('./baseConfig/webpack.plugin')
-const os = require('os')
-const threads = os.cpus().length
 
 module.exports = {
   // 相对路径：生产模式下，生成dist目录与src平级
