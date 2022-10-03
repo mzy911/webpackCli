@@ -1,10 +1,10 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
-const stylConfig = require('./webpack.style.js')
-const scriptConfig = require('./webpack.script.js')
-const staticConfig = require('./webpack.static')
-const serverConfig = require('./webpack.server')
+const stylConfig = require('./baseConfig/webpack.style.js')
+const scriptConfig = require('./baseConfig/webpack.script.js')
+const staticConfig = require('./baseConfig/webpack.static')
+const serverConfig = require('./baseConfig/webpack.server')
 
 module.exports = {
   // 相对路径：开发环境下，在虚拟内存中运行与src并排 (并非相对于当前目录)

@@ -1,11 +1,9 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
-
-const stylConfig = require('./webpack.style.js')
-const scriptConfig = require('./webpack.script.js')
-const staticConfig = require('./webpack.static')
-const serverConfig = require('./webpack.server')
+const stylConfig = require('./baseConfig/webpack.style.js')
+const scriptConfig = require('./baseConfig/webpack.script.js')
+const staticConfig = require('./baseConfig/webpack.static')
 
 module.exports = {
   // 相对路径：生产模式下，生成dist目录与src平级

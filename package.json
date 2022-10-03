@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
+    "start": "npm run dev",
+    "dev": "webpack-dev-server --config ./config/webpack.dev.js",
     "build": "webpack --config ./config/webpack.prod.js",
-    "start": "webpack-dev-server --config ./config/webpack.dev.js",
     "test": "eslint src",
     "prepare": "husky install"
   },
