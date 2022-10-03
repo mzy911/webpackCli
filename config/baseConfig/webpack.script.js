@@ -1,8 +1,11 @@
+const path = require('path')
+
 module.exports = {
   config: [
     {
       test: /\.js$/,
       exclude: /node_modules/,
+      include: path.resolve(__dirname, '../../src'),
       loader: 'babel-loader'
       // options配置写到 .babelrc.js
       // options: {}
@@ -37,7 +40,8 @@ module.exports = {
         },
         'ts-loader'
       ],
-      exclude: /node_modules/
+      exclude: /node_modules/,
+      include: path.resolve(__dirname, '../../src')
     }
   ]
 }

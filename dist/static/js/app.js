@@ -7,7 +7,7 @@ var a = 'aaa';
 ;// CONCATENATED MODULE: ./src/index.js
 
 
-console.log('m', a()); // 对象
+console.log('m', a); // 对象
 // const obj = { name: '孙悟空', age: 33 }
 // console.log(obj)
 // Promise对象
