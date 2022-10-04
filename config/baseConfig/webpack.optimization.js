@@ -72,6 +72,11 @@ module.exports = {
       //     //filename:"customname"//还可以重新定义生成模块的名称
       //   }
       // }
+    },
+
+    // 解决由于某个文件hash值变化，引起的连带关系（由一个文件维护映射关系）
+    runtimeChunk: {
+      name: (entrypoint) => `runtime~${entrypoint.name}.js`
     }
   }
 }
