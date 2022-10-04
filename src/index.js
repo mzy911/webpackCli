@@ -1,5 +1,5 @@
 import './style/index.less'
-import { a } from './m1.ts'
+import { a } from './utils/promise.ts'
 
 // // 对象
 // const obj = { name: '孙悟空', age: 33 }
