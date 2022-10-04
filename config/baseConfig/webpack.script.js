@@ -26,6 +26,17 @@ module.exports = {
         }
       ]
     },
+    // 处理jsx文件
+    {
+      test: /\.jsx$/,
+      loader: 'babel-loader',
+      exclude: /node_modules/,
+      include: path.resolve(__dirname, '../../src'),
+      options: {
+        cacheDirectory: true, // 开启babel缓存
+        cacheCompression: false // 关闭缓存文件压缩
+      }
+    },
     {
       test: /\.ts$/,
       use: [
