@@ -13,7 +13,9 @@ module.exports = {
     path: undefined,
 
     // 入口文件的打包名称
-    filename: 'static/js/main.js'
+    filename: 'static/js/main.js',
+    chunkFilename: 'static/js/[name].chunk.js', // 打包出的chunk名称，支持动态导入 import()
+    assetModuleFilename: 'static/media/[hash:10][ext][query]' // 图片、字体等（type:'asset'静态资源）
   },
 
   mode: 'development',

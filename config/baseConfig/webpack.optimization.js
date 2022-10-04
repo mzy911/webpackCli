@@ -11,8 +11,8 @@ module.exports = {
     minimizer: [
       // 将 CSS 从你的 bundle 中分离出来
       new MiniCssExtractPlugin({
-        filename: 'static/css/[name].[hash:8].css',
-        chunkFilename: 'static/css/[id].[hash:8].css'
+        filename: 'static/css/[name].css', // 抽离后的文件名称
+        chunkFilename: 'static/css/[name].chunk.css' // 拆分、动态导入后的文件名称
       }),
 
       // 压缩css

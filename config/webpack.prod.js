@@ -16,9 +16,15 @@ module.exports = {
     // 绝对路径："dist" ==> "../dist"
     path: path.resolve(__dirname, '../dist'),
 
-    // 入口文件的打包名称
-    filename: 'static/js/[name].[hash:8].js',
-    chunkFilename: 'static/js/[name].js', // 打包出的chunk名称，包含动态导入 import()
+    /**
+     * 生成文件的名称
+     * 1、hash：项目级别
+     * 2、chunkhash：入口级别
+     * 3、contenthash：文件级别
+     */
+    filename: 'static/js/[name].js', // 入口文件的打包名称
+    chunkFilename: 'static/js/[name].chunk.js', // 打包出的chunk名称，支持动态导入 import()
+    assetModuleFilename: 'static/media/[hash:10][ext][query]', // 图片、字体等（type:'asset'静态资源）
 
     // 告诉webpack打包出来的文件中，不使用箭头函数( 默认为立刻执行的箭头函数 )
     environment: {

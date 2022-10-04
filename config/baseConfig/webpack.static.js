@@ -26,9 +26,9 @@ module.exports = {
      *      a、asset/resource ：等同于 file-loader
      *      b、asset/inline ：等同于 url-loader（默认base64编译）
      *      c、asset/source ：等同于 raw-loader
-     *   2、指定文件输出的位置
-     *      a、配置当前的：generator.filename
-     *      b、配置出口出：output.assetModuleFilename
+     *   2、指定文件输出的位置：
+     *      a、方式一：当前loader处：generator.filename
+     *      b、方式二：统一出口处处理：output.assetModuleFilename
      *   3、自定义 data URI 生成器
      *      a、默认是呈现为使用 Base64 算法编码的文件内容
      *      b、自定义编码算法
@@ -72,25 +72,21 @@ module.exports = {
         dataUrlCondition: {
           maxSize: 4 * 1024 // 4kb
         }
-      },
-      generator: {
-        // 指定文件的输出位置
-        filename: 'static/images/[hash:10][ext][query]',
-        // 自定义编码算法
-        dataUrl: (content) => {
-          content = content.toString()
-          return svgToMiniDataURI(content)
-        }
       }
+      // generator: {
+      // 指定文件的输出位置
+      // filename: 'static/images/[hash:10][ext][query]',
+      // 自定义编码算法:默认base64
+      //   dataUrl: (content) => {
+      //     content = content.toString()
+      //     return svgToMiniDataURI(content)
+      //   }
+      // }
     },
     // 处理其他资源
     {
       test: /\.(ttf|woff2?|mp3|mp4)$/i,
-      type: 'asset/resource',
-      generator: {
-        // 指定文件的输出位置
-        filename: 'static/media/[hash:10][ext][query]'
-      }
+      type: 'asset/resource'
     }
 
     /**

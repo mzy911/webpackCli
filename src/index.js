@@ -1,5 +1,5 @@
 import './style/index.less'
-import { a } from './utils/promise.ts'
+import ice from './assets/ice.png'
 
 // // 对象
 // const obj = { name: '孙悟空', age: 33 }
@@ -10,8 +10,8 @@ import { a } from './utils/promise.ts'
 //   resolve('resolve')
 // })
 const wating = async () => {
-  const res = await a
-  console.log('res', res)
+  const { a } = await import('./utils/promise.ts')
+  console.log('res', a)
 }
 wating()
 
@@ -22,3 +22,9 @@ wating()
 // // 指数计算
 // const x = 10 ** 2
 // console.log('x', x)
+
+const loadImg = () => {
+  const target = document.getElementById('img')
+  target.setAttribute('src', ice)
+}
+loadImg()
