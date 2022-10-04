@@ -23,5 +23,18 @@ module.exports = {
       cacheLocation: path.resolve(__dirname, '../../node_modules/.cache/eslintCatch'), // 自定义缓存路径
       threads // 开启多线程、和设置进程数量
     })
+
+    /**
+     * Script的加载模式：报错没跑起来
+     * 1、preload：优先级较高，只加载当前页面资源
+     * 2、prefetch：优先级较低，可以预加载其它页面资源
+     * 3、兼容性不是特别好：https://caniuse.com/
+     */
+    // const PreloadWebpackPlugin = require('preload-webpack-plugin')
+    // new PreloadWebpackPlugin({
+    //   // rel: 'prefetch' // 配置prefetch，无需"as"
+    //   rel: 'preload',
+    //   as: 'script'
+    // })
   ]
 }
