@@ -48,6 +48,9 @@ module.exports = {
     quotes: [2, 'single'] // 单双引号：single、double
   },
 
+  // 解决动态导入语法报错：import('@/utils/a.js')
+  plugins: ['import'],
+
   // 给某些文件单独设置规则
   overrides: [
     {
