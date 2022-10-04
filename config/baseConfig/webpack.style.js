@@ -11,59 +11,44 @@ if (process.env.NODE_ENV === 'production') {
   cssExtract = MiniCssExtractPlugin.loader
 }
 
+const getStyleLoaders = (pre) => {
+  return [
+    cssExtract,
+    'css-loader', // 将css资源编译到common.js模块中
+    {
+      loader: 'postcss-loader',
+      options: {
+        postcssOptions: {
+          plugins: [
+            [
+              'postcss-preset-env',
+              {
+                browsers: ['last 3 versions', '> 1%', 'not dead']
+              }
+            ]
+          ]
+        }
+      }
+    },
+    pre
+  ].filter(Boolean)
+}
+
 module.exports = {
   config: [
     // 处理、解析css文件
     {
       test: /\.css$/,
-      use: [cssExtract, 'css-loader']
+      use: getStyleLoaders()
     },
     // 解析、处理 less 文件
     {
       test: /\.less$/,
-      use: [
-        cssExtract,
-        'css-loader', // 将css资源编译到common.js模块中
-        {
-          loader: 'postcss-loader',
-          options: {
-            postcssOptions: {
-              plugins: [
-                [
-                  'postcss-preset-env',
-                  {
-                    browsers: 'last 3 versions'
-                  }
-                ]
-              ]
-            }
-          }
-        },
-        'less-loader'
-      ]
+      use: getStyleLoaders('less-loader')
     },
     {
       test: /\.s[ac]ss$/,
-      use: [
-        cssExtract,
-        'css-loader', // 将css资源编译到common.js模块中
-        {
-          loader: 'postcss-loader',
-          options: {
-            postcssOptions: {
-              plugins: [
-                [
-                  'postcss-preset-env',
-                  {
-                    browsers: 'last 3 versions'
-                  }
-                ]
-              ]
-            }
-          }
-        },
-        'sass-loader'
-      ]
+      use: getStyleLoaders('sass-loader')
     }
   ]
 }
