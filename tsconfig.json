@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "esnext", // 编译后生成js的版本（ES5、ES6、ES2015、ES2016、ES2017、ESNext）
-    "module": "esnext", // 编译后模块系统（ESM、CommonJS、AMD、esnex...）
-    "strict": true // 启用所有严格类型检查选项
+    "module": "esnext" // 编译后模块系统（ESM、CommonJS、AMD、esnex...）
+    // "strict": true // 启用所有严格类型检查选项
     // "lib": ["dom", "dom.iterable", "esnext"], // 指定项目中依赖的库（如：DOM相关操作使用dom）
     // "alwaysStrict": true, // 编译后的文件，是否开启严格模式( import、export本身就是严格模式)
     // "noImplicitAny": false, // 在表达式和声明上有隐含的 any类型时报错
