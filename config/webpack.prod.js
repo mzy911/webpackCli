@@ -7,13 +7,16 @@ const pluginConfig = require('./baseConfig/webpack.plugin')
 
 module.exports = {
   // 相对路径：生产模式下，生成dist目录与src平级
-  entry: './src/index.js',
+  entry: {
+    app: './src/app.js',
+    main: './src/main.js'
+  },
   output: {
     // 绝对路径："dist" ==> "../dist"
     path: path.resolve(__dirname, '../dist'),
 
     // 入口文件的打包名称
-    filename: 'static/js/app.js',
+    filename: 'static/js/[name].[hash:8].js',
 
     // 告诉webpack打包出来的文件中，不使用箭头函数( 默认为立刻执行的箭头函数 )
     environment: {
