@@ -3,7 +3,6 @@ const scriptConfig = require('./baseConfig/webpack.script.js')
 const staticConfig = require('./baseConfig/webpack.static')
 const serverConfig = require('./baseConfig/webpack.server')
 const pluginConfig = require('./baseConfig/webpack.plugin')
-const path = require('path')
 
 module.exports = {
   // 相对路径：开发环境下，在虚拟内存中运行与src并排 (并非相对于当前目录)

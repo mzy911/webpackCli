@@ -23,9 +23,11 @@ module.exports = {
             cacheDirectory: true, // 开启babel缓存(默认缓存路径：node_modules/.catch...)
             cacheCompression: false, // 关闭缓存文件压缩
             // react配置热更新：还需要配置插件
-            plugins: [
-              isDevelopment && 'react-refresh/babel' // 开启js的HMR功能
-            ]
+            plugins: isDevelopment
+              ? [
+                  'react-refresh/babel' // 开启js的HMR功能
+                ]
+              : []
           }
         }
       ]
@@ -40,9 +42,11 @@ module.exports = {
         cacheDirectory: true, // 开启babel缓存
         cacheCompression: false, // 关闭缓存文件压缩
         // react配置热更新：还需要配置插件
-        plugins: [
-          isDevelopment && 'react-refresh/babel' // 开启js的HMR功能
-        ]
+        plugins: isDevelopment
+          ? [
+              'react-refresh/babel' // 开启js的HMR功能
+            ]
+          : []
       }
     },
     {
@@ -55,9 +59,11 @@ module.exports = {
             cacheDirectory: true, // 开启babel缓存
             cacheCompression: false, // 关闭缓存文件压缩
             // react配置热更新：还需要配置插件
-            plugins: [
-              isDevelopment && 'react-refresh/babel' // 开启js的HMR功能
-            ]
+            plugins: isDevelopment
+              ? [
+                  'react-refresh/babel' // 开启js的HMR功能
+                ]
+              : []
           }
         },
         'ts-loader'

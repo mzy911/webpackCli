@@ -1,7 +1,8 @@
 import React,{Suspense, lazy} from 'react'
 import { Link, Routes, Route } from 'react-router-dom'
-const Home = lazy(()=>import(/* webpackChunkName:'home' */ '@/views/Home'))
-const About = lazy(()=>import(/* webpackChunkName:'About' */ '@/views/About'))
+const Home = lazy(()=>import(/* webpackChunkName:'home' */ './views/Home/index'))
+const About = lazy(()=>import(/* webpackChunkName:'About' */ './views/About/index'))
+
 
 const App = () => {
   return (
