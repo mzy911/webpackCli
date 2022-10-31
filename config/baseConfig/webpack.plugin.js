@@ -4,7 +4,7 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 const os = require('os')
 const threads = os.cpus().length - 1 // 获取cpu的个数，每个cpu启动时间大概为600ms
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const isDevelopment = process.env.NODE_ENV === 'development'
+const isProduction = process.env.NODE_ENV === 'production'
 const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
@@ -29,7 +29,7 @@ module.exports = {
     }),
 
     // 解决react热更新问题：还需配合loader使用
-    isDevelopment && new ReactRefreshWebpackPlugin(),
+    !isProduction && new ReactRefreshWebpackPlugin(),
 
     // 复制public下静态资源
     new CopyPlugin({

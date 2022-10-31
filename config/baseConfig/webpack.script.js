@@ -1,7 +1,7 @@
 const path = require('path')
 const os = require('os')
 const threads = os.cpus().length - 1
-const isDevelopment = process.env.NODE_ENV === 'development'
+const isProduction = process.env.NODE_ENV === 'production'
 module.exports = {
   config: [
     {
@@ -24,7 +24,7 @@ module.exports = {
             cacheCompression: false, // 关闭缓存文件压缩
             // react配置热更新：还需要配置插件
             plugins: [
-              isDevelopment && 'react-refresh/babel' // 开启js的HMR功能
+              !isProduction && 'react-refresh/babel' // 开启js的HMR功能
             ].filter(Boolean)
           }
         }
@@ -41,7 +41,7 @@ module.exports = {
         cacheCompression: false, // 关闭缓存文件压缩
         // react配置热更新：还需要配置插件
         plugins: [
-          isDevelopment && 'react-refresh/babel' // 开启js的HMR功能
+          !isProduction && 'react-refresh/babel' // 开启js的HMR功能
         ].filter(Boolean)
       }
     },
@@ -56,7 +56,7 @@ module.exports = {
             cacheCompression: false, // 关闭缓存文件压缩
             // react配置热更新：还需要配置插件
             plugins: [
-              isDevelopment && 'react-refresh/babel' // 开启js的HMR功能
+              !isProduction && 'react-refresh/babel' // 开启js的HMR功能
             ].filter(Boolean)
           }
         },

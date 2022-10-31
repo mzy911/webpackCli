@@ -1,7 +1,7 @@
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const isDevelopment = process.env.NODE_ENV === 'development'
+const isProduction = process.env.NODE_ENV === 'production'
 const os = require('os')
 const threads = os.cpus().length - 1
 
@@ -11,17 +11,17 @@ module.exports = {
     // 文件压缩
     minimizer: [
       // 将 CSS 从你的 bundle 中分离出来
-      !isDevelopment &&
+      isProduction &&
         new MiniCssExtractPlugin({
           filename: 'static/css/[name].css', // 抽离后的文件名称
           chunkFilename: 'static/css/[name].chunk.css' // 拆分、动态导入后的文件名称
         }),
 
       // 压缩css
-      !isDevelopment && new CssMinimizerPlugin(),
+      isProduction && new CssMinimizerPlugin(),
 
       // 压缩js
-      !isDevelopment &&
+      isProduction &&
         new TerserPlugin({
           // include: /\/includes/,
           // exclude: /\/excludes/,
