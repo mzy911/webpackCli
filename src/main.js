@@ -1,3 +1,7 @@
-import { sum } from './utils/math'
+import React from 'react'
+import ReactDom from 'react-dom/client'
+import App from './App'
 
-console.log('main', sum(3, 5))
+const root = ReactDom.createRoot(document.getElementById('app'))
+
+root.render(<App />)

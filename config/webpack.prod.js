@@ -11,7 +11,7 @@ module.exports = {
   //   // app: './src/app.js',
   //   // main: './src/main.js'
   // },
-  entry: './src/index.js',
+  entry: './src/main.js',
   output: {
     // 绝对路径："dist" ==> "../dist"
     path: path.resolve(__dirname, '../dist'),
@@ -68,7 +68,7 @@ module.exports = {
 
   // 解析模块规则
   resolve: {
-    mainFiles: ['index'], // 默认值是["index"]，意思是解析目录时，入口文件名是index
+    mainFiles: ['main'], // 默认值是["index"]，意思是解析目录时，入口文件名是index
     // 解析同名文件的先后顺序，手动添加".ts" (默认为[".wasm",".mjs",".js",".json"])
     extensions: ['.ts', '.js', '.jsx', '.json', '.less'],
     // 别称

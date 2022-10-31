@@ -19,6 +19,7 @@ module.exports = {
     new ESLintPlugin({
       // 开发环境下修改："src" ==> "../src"
       context: path.resolve(__dirname, '../../src'),
+      exclude: 'node_modules',
       cache: true, // 开启缓存
       cacheLocation: path.resolve(__dirname, '../../node_modules/.cache/eslintCatch'), // 自定义缓存路径
       threads // 开启多线程、和设置进程数量
