@@ -18,6 +18,8 @@ module.exports = {
      */
     hot: true,
 
+    historyApiFallback: true, // 解决hisroy路由下，页面刷新404问题
+
     // https: true,
     // https: { // 使用自签名证书
     //   minVersion: 'TLSv1.1',
