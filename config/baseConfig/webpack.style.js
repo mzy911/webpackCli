@@ -30,7 +30,18 @@ const getStyleLoaders = (pre) => {
         }
       }
     },
-    pre
+    pre && {
+      loader: pre,
+      options:
+        pre === 'less-loader'
+          ? {
+              lessOptions: {
+                // modifyVars: { '@primary-color': '#1DA57A' },
+                javascriptEnabled: true
+              }
+            }
+          : {}
+    }
   ].filter(Boolean)
 }
 
