@@ -6,7 +6,7 @@
  */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-let cssExtract = 'style-loader' // 解析出来的css，插入html中
+let cssExtract = 'vue-style-loader' // 解析出来的css，插入html中
 if (process.env.NODE_ENV === 'production') {
   cssExtract = MiniCssExtractPlugin.loader
 }

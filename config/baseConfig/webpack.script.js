@@ -1,4 +1,5 @@
 const path = require('path')
+const { VueLoaderPlugin } = require('vue-loader')
 const os = require('os')
 const threads = os.cpus().length - 1
 
@@ -26,15 +27,13 @@ module.exports = {
         }
       ]
     },
-    // 处理jsx文件
+    // vue-loader不支持oneOf：配合插件使用
     {
-      test: /\.jsx$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/,
-      include: path.resolve(__dirname, '../../src'),
+      test: /\.vue$/,
+      loader: 'vue-loader', // 内部会给vue文件注入HMR功能代码
       options: {
-        cacheDirectory: true, // 开启babel缓存
-        cacheCompression: false // 关闭缓存文件压缩
+        // 开启缓存
+        cacheDirectory: path.resolve(__dirname, 'node_modules/.cache/vue-loader')
       }
     },
     {
