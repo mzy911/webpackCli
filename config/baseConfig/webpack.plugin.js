@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const os = require('os')
 const threads = os.cpus().length - 1 // 获取cpu的个数，每个cpu启动时间大概为600ms
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
   config: [
@@ -23,7 +24,10 @@ module.exports = {
       cache: true, // 开启缓存
       cacheLocation: path.resolve(__dirname, '../../node_modules/.cache/eslintCatch'), // 自定义缓存路径
       threads // 开启多线程、和设置进程数量
-    })
+    }),
+
+    // 解决react热更新问题：还需配合loader使用
+    new ReactRefreshWebpackPlugin()
 
     /**
      * Script的加载模式：报错没跑起来
