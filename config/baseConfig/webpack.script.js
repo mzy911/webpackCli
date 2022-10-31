@@ -27,6 +27,7 @@ module.exports = {
         }
       ]
     },
+
     // vue-loader不支持oneOf：配合插件使用
     {
       test: /\.vue$/,
@@ -36,6 +37,7 @@ module.exports = {
         cacheDirectory: path.resolve(__dirname, 'node_modules/.cache/vue-loader')
       }
     },
+
     {
       test: /\.ts$/,
       use: [

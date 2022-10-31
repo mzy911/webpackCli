@@ -4,6 +4,8 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 const os = require('os')
 const threads = os.cpus().length - 1 // 获取cpu的个数，每个cpu启动时间大概为600ms
 const { VueLoaderPlugin } = require('vue-loader')
+const { DefinePlugin } = require('webpack')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   config: [
@@ -22,7 +24,31 @@ module.exports = {
       threads // 开启多线程、和设置进程数量
     }),
 
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../../public'),
+          to: path.resolve(__dirname, '../../dist/public'),
+          toType: 'dir',
+          noErrorOnMissing: true,
+          globOptions: {
+            ignore: ['**/index.html']
+          },
+          info: {
+            minimized: true
+          }
+        }
+      ]
+    }),
+
     // vue插件：配合loader使用
-    new VueLoaderPlugin()
-  ]
+    new VueLoaderPlugin(),
+
+    // 1、corss-env定义的变量是给webpack打包使用
+    // 2、webpack定义的环境变量是给vue使用的，解决vue3页面告警的问题
+    new DefinePlugin({
+      __VUE_OPTIONS_API__: 'true',
+      __VUE_PROD_DEVTOOLS__: 'false'
+    })
+  ].filter(Boolean)
 }
