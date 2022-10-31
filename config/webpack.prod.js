@@ -22,14 +22,23 @@ module.exports = {
      * 2、chunkhash：入口级别
      * 3、contenthash：文件级别
      */
-    filename: 'static/js/[name].js', // 入口文件的打包名称
-    chunkFilename: 'static/js/[name].chunk.js', // 打包出的chunk名称，支持动态导入 import()
+    filename: 'static/js/[name].js', // "出口"名称（依赖入口）
+    chunkFilename: 'static/js/[name].chunk.js', // "chunk"名称、支持动态导入 import()
     assetModuleFilename: 'static/media/[hash:10][ext][query]', // 图片、字体等（type:'asset'静态资源）
 
     // 告诉webpack打包出来的文件中，不使用箭头函数( 默认为立刻执行的箭头函数 )
     environment: {
       arrowFunction: false
     },
+
+    // 浏览器加载资源前缀
+    // publicPath: 'auto', // 默认
+    // publicPath: 'https://cdn.example.com/assets/', // CDN（总是 HTTPS 协议）
+    // publicPath: '//cdn.example.com/assets/', // CDN（协议相同）
+    // publicPath: '/assets/', // 相对于服务(server-relative)
+    // publicPath: 'assets/', // 相对于 HTML 页面
+    // publicPath: '../assets/', // 相对于 HTML 页面
+    // publicPath: '', // 相对于 HTML 页面（目录相同）
 
     // 打包前清除dist目录下文件(等同于CleanWebpackPlugin)
     clean: true

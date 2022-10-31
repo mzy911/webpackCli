@@ -1,11 +1,9 @@
-const svgToMiniDataURI = require('mini-svg-data-uri')
-
 module.exports = {
   config: [
     /**
      * webpack4 配置规则
-     *   1、file-loader ：将文件发送到输出目录
-     *   2、url-loader ：将文件作为 data URI 内联到 bundle 中
+     *   1、file-loader ：将文件发送到输出目录（img）
+     *   2、url-loader ：将文件作为 data URI 内联到 bundle 中（base64）
      *   3、raw-loader ：将文件导入为字符串（例如模版字符串‘原样’返回）
      */
     // {
@@ -28,11 +26,11 @@ module.exports = {
      *      c、asset/source ：等同于 raw-loader
      *   2、指定文件输出的位置：
      *      a、方式一：当前loader处：generator.filename
-     *      b、方式二：统一出口处处理：output.assetModuleFilename
+     *      b、方式二：统一出口处处理：output.assetModuleFilename（asset静态资源）
      *   3、自定义 data URI 生成器
      *      a、默认是呈现为使用 Base64 算法编码的文件内容
      *      b、自定义编码算法
-     *   4、通用资源类型
+     *   4、通用资源类型（ 不设置type类型，自动处理 ）
      *      a、小于 8kb 默认使用 asset/inline
      *      b、大于 8kb 默认使用 asset/resource
      *      c、可以通过 parser.dataUrlCondition 自定义大小
@@ -90,7 +88,7 @@ module.exports = {
     }
 
     /**
-     * 如果在 webpack5 中使用了 webpack4 的配置规则
+     * 注意： 如果在 webpack5 中使用了 webpack4 的配置规则
      *   1、配置 type: 禁用 webpack5 的默认规则
      *   2、配置 dependency：让某种规则失效
      *   3、按照 webpack4 进行配置

@@ -3,7 +3,7 @@ module.exports = {
     host: 'localhost',
     port: 3000,
     open: false,
-
+    historyApiFallback: true, // 解决history路由页面刷新404问题
     /**
      * 模块热更新(默认为true)
      * 1、hot为false
@@ -13,7 +13,12 @@ module.exports = {
      *    a、改动css，会实现"热更新"(局部更新)
      *    b、改动js依然会重新打包整个项目、刷新浏览器
      *    c、手动实现"热更新"：module.hot.accept('@/js/a.js', callback)
-     *    d、vue、react"热更新"：vue-loader、react-hot-loader
+     *    d、热更新插件
+     *       vue：
+     *          vue-loader：处理vue项目热更新
+     *       react：
+     *          react-hot-loader：旧插件
+     *          @pmmmwh/react-refresh-webpack-plugin react-refresh：最新插件
      * 3、webpack4中还需要使用 new webpack.HotModuleReplacementPlugin() 插件
      */
     hot: true,

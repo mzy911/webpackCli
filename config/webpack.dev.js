@@ -5,15 +5,18 @@ const serverConfig = require('./baseConfig/webpack.server')
 const pluginConfig = require('./baseConfig/webpack.plugin')
 
 module.exports = {
-  // 相对路径：开发环境下，在虚拟内存中运行与src并排 (并非相对于当前目录)
-  entry: './src/index.js',
+  // 入口使用 相对路径：在虚拟内存中运行与src并排 (并非相对于当前目录)
+  entry: () => {
+    // 项目启动、watch执行
+    return './src/index.js'
+  },
 
   output: {
     // 开发环境下没有输出文件
     path: undefined,
 
     // 入口文件的打包名称
-    filename: 'static/js/main.js',
+    filename: 'static/js/main.js', // 单入口打包，可以固定名称
     chunkFilename: 'static/js/[name].chunk.js', // 打包出的chunk名称，支持动态导入 import()
     assetModuleFilename: 'static/media/[hash:10][ext][query]' // 图片、字体等（type:'asset'静态资源）
   },
@@ -29,13 +32,13 @@ module.exports = {
   module: {
     rules: [
       {
-        // 让每个文件直接找到对应的loader，不用一个个对比
+        // 直接找到对应的loader，不用一个个对比
         oneOf: [
-          // 处理 ts
-          ...scriptConfig.config,
-
           // 处理样式：css、less、sass
           ...stylConfig.config,
+
+          // 处理 js、ts
+          ...scriptConfig.config,
 
           // 处理静态资源
           ...staticConfig.config,

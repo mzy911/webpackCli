@@ -23,8 +23,8 @@ module.exports = {
 
   // 模块的解析规则
   parserOptions: {
-    ecmaVersion: 'latest', // 用哪个es的版本解析你的代码，默认 3，5 （ 不设置，使用const关键词会报错）
-    sourceType: 'module', // es module
+    ecmaVersion: 'latest', // js解析规则：，默认 3，5 （ 不设置，使用const关键词会报错）
+    sourceType: 'module', // 模块化：es module
     ecmaFeatures: {
       globalReturn: true, //  允许在全局作用域下使用 return 语句
       impliedStrict: true, // 启用全局严格模式（ ecmaVersion >= 5）
@@ -32,7 +32,7 @@ module.exports = {
     }
   },
 
-  // 继承语法规则（别人定义好的 ）
+  // 继承语法规则（  别人定义好的 ）
   extends: [
     // 'eslint:all' // eslint全部内置规则（285个，一般不用）
     // 'eslint:recommended' //  eslint中的recommended规范（50多个，推荐使用）
