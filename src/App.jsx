@@ -1,7 +1,7 @@
-import React from 'react'
+import React,{Suspense, lazy} from 'react'
 import { Link, Routes, Route } from 'react-router-dom'
-import Home from '@/views/Home'
-import About from '@/views/About'
+const Home = lazy(()=>import('@/views/Home'))
+const About = lazy(()=>import('@/views/About'))
 
 const App = () => {
   return (
@@ -14,11 +14,13 @@ const App = () => {
         <Link to="/about">About</Link>
       </div>
       <div>
+      <Suspense>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
         </Routes>
+      </Suspense>
       </div>
     </div>
   )
