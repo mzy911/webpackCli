@@ -6,6 +6,9 @@ const threads = os.cpus().length - 1 // 获取cpu的个数，每个cpu启动时�
 const { VueLoaderPlugin } = require('vue-loader')
 const { DefinePlugin } = require('webpack')
 const CopyPlugin = require('copy-webpack-plugin')
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 
 module.exports = {
   config: [
@@ -43,6 +46,14 @@ module.exports = {
 
     // vue插件：配合loader使用
     new VueLoaderPlugin(),
+
+    // element-plus ui 按需引入
+    AutoImport({
+      resolvers: [ElementPlusResolver()]
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()]
+    }),
 
     // 1、corss-env定义的变量是给webpack打包使用
     // 2、webpack定义的环境变量是给vue使用的，解决vue3页面告警的问题
