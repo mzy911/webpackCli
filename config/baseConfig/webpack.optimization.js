@@ -1,6 +1,7 @@
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const isDevelopment = process.env.NODE_ENV === 'development'
 const os = require('os')
 const threads = os.cpus().length - 1
 
@@ -16,22 +17,23 @@ module.exports = {
       }),
 
       // 压缩css
-      new CssMinimizerPlugin(),
+      isDevelopment && new CssMinimizerPlugin(),
 
       // 压缩js
-      new TerserPlugin({
-        // include: /\/includes/,
-        // exclude: /\/excludes/,
-        // extractComments: true, // 注释
-        parallel: threads // 使用多进程并发运行以提高构建速度
-        // 自定义压缩函数
-        // minify: (file, sourceMap, minimizerOptions) => {
-        //   const extractedComments = []
-        //   const { map, code } = require('uglify-module').minify(file, {})
-        //   return { map, code, extractedComments }
-        // }
-      })
-    ],
+      isDevelopment &&
+        new TerserPlugin({
+          // include: /\/includes/,
+          // exclude: /\/excludes/,
+          // extractComments: true, // 注释
+          parallel: threads // 使用多进程并发运行以提高构建速度
+          // 自定义压缩函数
+          // minify: (file, sourceMap, minimizerOptions) => {
+          //   const extractedComments = []
+          //   const { map, code } = require('uglify-module').minify(file, {})
+          //   return { map, code, extractedComments }
+          // }
+        })
+    ].filter(Boolean),
 
     // 拆分代码块
     // 1、动态导入会单独生成一个chunk：import(/* webpackChunkName:"customName" */,"@/a.js").then
