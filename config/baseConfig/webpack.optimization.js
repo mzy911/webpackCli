@@ -37,8 +37,8 @@ module.exports = {
     // 1、每个入口至少打包成一个 chunk
     // 2、动态导入会单独生成一个chunk：import(/* webpackChunkName:"customName" */,"@/a.js").then
     splitChunks: {
-      chunks: 'all' // 默认为async async | all | initial
-      // 此部分为默认值
+      chunks: 'all', // 默认为async async | all | initial
+      // 以下为默认值
       // minSize: 20000, // 默认20000，生成 chunk 的最小体积
       // minRemainingSize: 0, // 类似于明Size，默认为0，避免拆分后的文件为0
       // minChunks: 1,// 默认为1，至少引用一次被才能被拆分
@@ -49,33 +49,41 @@ module.exports = {
       // name: true, // 设为true表示根据模块名和CacheGroup的key来自动生成,使用上面连接符连接
 
       // *** 自定义分组（两个默认的组：defaultVendors、default）
-      // cacheGroups: {
-      //   defaultVendors: { // 组名
-      //     test: /[\\/]node_modules[\\/]/, // 需要打包到一起的模块
-      //     priority: -10, // 权重（越大越高）
-      //     reuseExistingChunk: true, // 如果当前 chunk 包含已从主 bundle 中拆分出的模块，则它将被重用，而不是生成新的模块
-      //   },
-      //   vendors: {
-      //     //vendors~main.bundle.js
-      //     //检查node_modules目录
-      //     //只要模块在该目录下就使用上面配置拆分到这个组
-      //     test: /[\\/]node_modules[\\/]/,
-      //     //权重-10,决定了哪个组优先匹配
-      //     //例如node_modules下有个模块要拆分
-      //     //同时满足vendors和default组
-      //     //此时就会分到vendors组,因为-10>-20
-      //     priority: -10
-      //     //filename:"customname"//含有动态导入的模块，不能使用filename
-      //   },
-      //   // 默认缓存组名（merge上面默认配置）
-      // default: {
-      //   minSize: 0,
-      //   minChunks: 2, // 最少引用两次才会被拆分
-      //   priority: -20, //权重-20
-      //   reuseExistingChunk: true // a -> b -> c (直接复用不抽离)
-      //   //filename:"customname"//还可以重新定义生成模块的名称
-      // }
-      // }
+      cacheGroups: {
+        // layouts通常是admin项目的主体布局组件，所有路由组件都要使用的
+        layouts: {
+          name: 'layouts',
+          test: path.resolve(__dirname, '../src/layouts'),
+          priority: 40
+        },
+        // 如果项目中使用element-plus，进行单独打包
+        elementUI: {
+          name: 'chunk-elementPlus',
+          test: /[\\/]node_modules[\\/]_?element-plus(.*)/,
+          priority: 30
+        },
+        // 将vue相关的库单独打包，减少node_modules的chunk体积。
+        vue: {
+          name: 'vue',
+          test: /[\\/]node_modules[\\/]vue(.*)[\\/]/,
+          chunks: 'initial',
+          priority: 20
+        },
+        libs: {
+          name: 'chunk-libs',
+          test: /[\\/]node_modules[\\/]/,
+          priority: 10, // 权重最低，优先考虑前面内容
+          chunks: 'initial'
+        },
+        // 默认缓存组名（merge上面默认配置）
+        default: {
+          minSize: 0,
+          minChunks: 2, // 最少引用两次才会被拆分
+          priority: -20, //权重-20
+          reuseExistingChunk: true // a -> b -> c (直接复用不抽离)
+          //filename:"customname"//还可以重新定义生成模块的名称
+        }
+      }
     },
 
     // 解决由于某个文件hash值变化，引起的连带关系（由一个文件维护映射关系）
