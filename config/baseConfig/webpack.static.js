@@ -81,10 +81,21 @@ module.exports = {
       //   }
       // }
     },
+
     // 处理其他资源
     {
       test: /\.(ttf|woff2?|mp3|mp4)$/i,
       type: 'asset/resource'
+    },
+
+    // 处理csv、xml
+    {
+      test: /\.(csv|tsv)$/i,
+      use: 'csv-loader'
+    },
+    {
+      test: /\.xml$/i,
+      use: 'xml-loader'
     }
 
     /**
