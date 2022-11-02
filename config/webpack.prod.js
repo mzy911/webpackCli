@@ -1,9 +1,9 @@
-const path = require('path')
 const stylConfig = require('./baseConfig/webpack.style')
 const scriptConfig = require('./baseConfig/webpack.script')
 const staticConfig = require('./baseConfig/webpack.static')
 const optimizationConfig = require('./baseConfig/webpack.optimization')
 const pluginConfig = require('./baseConfig/webpack.plugin')
+const path = require('path')
 
 module.exports = {
   // 相对路径：生产模式下，生成dist目录与src平级
@@ -31,15 +31,6 @@ module.exports = {
       arrowFunction: false
     },
 
-    // 浏览器加载资源前缀
-    // publicPath: 'auto', // 默认
-    // publicPath: 'https://cdn.example.com/assets/', // CDN（总是 HTTPS 协议）
-    // publicPath: '//cdn.example.com/assets/', // CDN（协议相同）
-    // publicPath: '/assets/', // 相对于服务(server-relative)
-    // publicPath: 'assets/', // 相对于 HTML 页面
-    // publicPath: '../assets/', // 相对于 HTML 页面
-    // publicPath: '', // 相对于 HTML 页面（目录相同）
-
     // 打包前清除dist目录下文件(等同于CleanWebpackPlugin)
     clean: true
   },
@@ -47,7 +38,7 @@ module.exports = {
   mode: 'production',
 
   // 能检测到行、列的报错
-  // devtool: 'source-map',
+  devtool: 'source-map',
 
   module: {
     rules: [

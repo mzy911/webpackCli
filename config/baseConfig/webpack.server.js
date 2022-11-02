@@ -1,9 +1,8 @@
 module.exports = {
   config: {
-    host: 'localhost',
+    host: 'localhost', // 0.0.0.0 同局域网内可以被访问到
     port: 3000,
     open: false,
-    historyApiFallback: true, // 解决history路由页面刷新404问题
     /**
      * 模块热更新(默认为true)
      * 1、hot为false
@@ -23,6 +22,18 @@ module.exports = {
      */
     hot: true,
 
+    // 当使用HTML5 History API时，index.html页面可能要代替404响应。
+    // 启用devServer。将historyApiFallback设置为true:
+    // historyApiFallback: true,
+    // historyApiFallback: {
+    //   rewrites: [
+    //     { from: /^\/$/, to: '/views/landing.html' },
+    //     { from: /^\/subpage/, to: '/views/subpage.html' },
+    //     { from: /./, to: '/views/404.html' }
+    //   ]
+    // },
+    historyApiFallback: true, // 解决history路由页面刷新404问题
+
     // https: true,
     // https: { // 使用自签名证书
     //   minVersion: 'TLSv1.1',
@@ -37,17 +48,6 @@ module.exports = {
     // 设置请求头
     // headers: {
     //   'X-Custom-Foo': 'bar'
-    // },
-
-    // 当使用HTML5 History API时，index.html页面可能要代替404响应。
-    // 启用devServer。将historyApiFallback设置为true:
-    // historyApiFallback: true,
-    // historyApiFallback: {
-    //   rewrites: [
-    //     { from: /^\/$/, to: '/views/landing.html' },
-    //     { from: /^\/subpage/, to: '/views/subpage.html' },
-    //     { from: /./, to: '/views/404.html' }
-    //   ]
     // },
 
     // 可以拦截接口

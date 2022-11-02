@@ -1,5 +1,6 @@
 const path = require('path')
 const os = require('os')
+const { request } = require('http')
 const threads = os.cpus().length - 1
 
 module.exports = {
@@ -24,8 +25,19 @@ module.exports = {
             cacheCompression: false // 关闭缓存文件压缩
           }
         }
+        // webpack4中使用loader、webpack5中使用plugin
+        // {
+        //   loader: 'eslint-loader',
+        // }
       ]
     },
+
+    // 给某个某块提供 window 对象
+    // {
+    //   test: require.resolve('../../src/index.js'),
+    //   use: 'imports-loader?wrapper=window'
+    // },
+
     // 处理jsx文件
     {
       test: /\.jsx$/,
