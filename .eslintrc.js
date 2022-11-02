@@ -4,13 +4,15 @@ module.exports = {
     es2021: true, // 声明js新的语法：WeakRef
     node: true, // 声明node下全局变量：__dirname
     browser: true, // 声明浏览器下全局变量：window、document
-    commonjs: true,
-    jquery: true // 项目中可以直接使用API: $('idname')
+    commonjs: true
+    // jquery: true, // 项目中可以直接使用API: $('idname')
+    // lodash: true // 项目中可以直接使用API: $('idname')
   },
 
   // 自定义全局变量
   globals: {
-    Lala: true // 提供全局变量
+    _: true,
+    $: true
   },
 
   /**

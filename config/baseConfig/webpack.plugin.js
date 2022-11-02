@@ -20,7 +20,7 @@ module.exports = {
       inject: 'head' // script 标签插入的位置
       // filename: '**/index.html' // 自定义html名称(路径)
       // chunks: [], // 根据多入口，可手动导入要使用的chunk
-      // publicPath:''
+      // publicPath:'' // 给script、style添加公共路径
     }),
 
     // 配置eslint：webpack4中使用loader、webpack5中使用plugin
@@ -28,8 +28,8 @@ module.exports = {
       // 开发环境下修改："src" ==> "../src"
       context: path.resolve(__dirname, '../../src'),
       cache: true, // 开启缓存
-      cacheLocation: path.resolve(__dirname, '../../node_modules/.cache/eslintCatch'), // 自定义缓存路径
-      threads // 开启多线程、和设置进程数量
+      cacheLocation: path.resolve(__dirname, '../../node_modules/.cache/eslintCatch') // 自定义缓存路径
+      // threads // 开启多线程、和设置进程数量
     }),
 
     // 提供全局变量
@@ -37,22 +37,32 @@ module.exports = {
       // 1、组件内不用单独导入lodash，可以直接使用
       // 2、默认路径，(./**) 指向 node_modules
       // 3、可以手动修改路径，path.resolve(path.join(__dirname, 'src/module1')),
-      // _: 'lodash', // 可以是字符串
-      // _map: ['lodash', 'map'], // 可以是数据
+      $: 'jquery',
+      _: 'lodash'
+      // _map: ['lodash', 'map'] // 可以是数据
       // Vue: ['vue/dist/vue.esm.js', 'default']
     }),
 
     // 1、动态打包：需要单独进行 webpack.all.js 配置打包
     // 2、还需配置：add-asset-html-webpack-plugin使用
     new webpack.DllReferencePlugin({
-      manifest: path.resolve(__dirname, '../../dll/manifest.json')
+      manifest: path.resolve(__dirname, '../../dll/jquery_manifest.json')
+    }),
+    new webpack.DllReferencePlugin({
+      manifest: path.resolve(__dirname, '../../dll/lodash_manifest.json')
     }),
 
     // 将动态打包的插件，动态添加到html中
-    new AddAssetHtmlPlugin({
-      filepath: path.resolve(__dirname, '../../dll/jquery.js'),
-      publicPath: './'
-    })
+    new AddAssetHtmlPlugin([
+      {
+        filepath: path.resolve(__dirname, '../../dll/jquery.js'),
+        publicPath: './'
+      },
+      {
+        filepath: path.resolve(__dirname, '../../dll/lodash.js'),
+        publicPath: './'
+      }
+    ])
 
     // 分析包的依赖关系
     // new BundleAnalyzerPlugin()

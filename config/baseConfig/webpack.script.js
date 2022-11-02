@@ -14,7 +14,7 @@ module.exports = {
         {
           loader: 'thread-loader',
           options: {
-            works: threads // 线程数量
+            // works: threads // 线程数量
           }
         },
         {
@@ -49,6 +49,7 @@ module.exports = {
         cacheCompression: false // 关闭缓存文件压缩
       }
     },
+
     {
       test: /\.ts$/,
       use: [
