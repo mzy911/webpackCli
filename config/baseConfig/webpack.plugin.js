@@ -32,19 +32,21 @@ module.exports = {
       // threads // 开启多线程、和设置进程数量
     }),
 
-    // 提供全局变量
+    // 1、自动加载模块，而不必在任何地方导入或要求它们(如：jquery、lodash)
+    // 2、默认路径，(./**) 指向 node_modules
+    // 3、导入自定义模块：utils: path.resolve(path.join(__dirname, 'src/module1'))
+    // 4、** 如果开启eslint，记得暴露全局变量
     new webpack.ProvidePlugin({
-      // 1、组件内不用单独导入lodash，可以直接使用
-      // 2、默认路径，(./**) 指向 node_modules
-      // 3、可以手动修改路径，path.resolve(path.join(__dirname, 'src/module1')),
       $: 'jquery',
-      _: 'lodash'
+      _: 'lodash',
+      utils: path.resolve(path.join(__dirname, '../../src/utils'))
       // _map: ['lodash', 'map'] // 可以是数据
       // Vue: ['vue/dist/vue.esm.js', 'default']
     }),
 
     // 1、动态打包：需要单独进行 webpack.all.js 配置打包
-    // 2、还需配置：add-asset-html-webpack-plugin使用
+    // 2、配合 webpack.DllPlugin()
+    // 3、还需配置：add-asset-html-webpack-plugin使用
     new webpack.DllReferencePlugin({
       manifest: path.resolve(__dirname, '../../dll/jquery_manifest.json')
     }),
@@ -56,11 +58,13 @@ module.exports = {
     new AddAssetHtmlPlugin([
       {
         filepath: path.resolve(__dirname, '../../dll/jquery.js'),
-        publicPath: './'
+        outputPath: '/dll/',
+        publicPath: './dll'
       },
       {
         filepath: path.resolve(__dirname, '../../dll/lodash.js'),
-        publicPath: './'
+        outputPath: '/dll/',
+        publicPath: './dll'
       }
     ])
 

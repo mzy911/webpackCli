@@ -9,7 +9,7 @@ module.exports = {
      *    a、css、js的 '任何改动'，整个项目重新打包
      *    b、浏览器刷新整个页面
      * 2、hot为true
-     *    a、改动css，会实现"热更新"(局部更新)
+     *    a、改动css，会实现"热更新"(style-lodaer：局部更新)
      *    b、改动js依然会重新打包整个项目、刷新浏览器
      *    c、手动实现"热更新"：module.hot.accept('@/js/a.js', callback)
      *    d、热更新插件

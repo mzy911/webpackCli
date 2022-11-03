@@ -26,7 +26,7 @@ module.exports = {
         new TerserPlugin({
           // include: /\/includes/,
           // exclude: /\/excludes/,
-          // extractComments: true, // 注释
+          extractComments: true // 注释
           // parallel: threads // 使用多进程并发运行以提高构建速度
           // 自定义压缩函数
           // minify: (file, sourceMap, minimizerOptions) => {
@@ -56,32 +56,32 @@ module.exports = {
 
       // *** 自定义分组（两个默认的组：defaultVendors、default）
       cacheGroups: {
-        //   // layouts通常是admin项目的主体布局组件，所有路由组件都要使用的
-        //   layouts: {
-        //     name: 'layouts',
-        //     test: path.resolve(__dirname, '../src/layouts'),
-        //     priority: 40
-        //   },
-        //   // 如果项目中使用element-plus，进行单独打包
-        //   elementUI: {
-        //     name: 'chunk-elementPlus',
-        //     test: /[\\/]node_modules[\\/]_?element-plus(.*)/,
-        //     priority: 30
-        //   },
-        //   // 将vue相关的库单独打包，减少node_modules的chunk体积。
-        //   vue: {
-        //     name: 'vue',
-        //     test: /[\\/]node_modules[\\/]vue(.*)[\\/]/,
-        //     chunks: 'initial',
-        //     priority: 20
-        //   },
-        //   libs: {
-        //     name: 'chunk-libs',
-        //     test: /[\\/]node_modules[\\/]/,
-        //     priority: 10, // 权重最低，优先考虑前面内容
-        //     chunks: 'initial'
-        //   },
-        //   // 默认缓存组名（merge上面默认配置）
+        // // layouts通常是admin项目的主体布局组件，所有路由组件都要使用的
+        // layouts: {
+        //   name: 'layouts',
+        //   test: path.resolve(__dirname, '../src/layouts'),
+        //   priority: 40
+        // },
+        // // 如果项目中使用element-plus，进行单独打包
+        // elementUI: {
+        //   name: 'chunk-elementPlus',
+        //   test: /[\\/]node_modules[\\/]_?element-plus(.*)/,
+        //   priority: 30
+        // },
+        // // 将vue相关的库单独打包，减少node_modules的chunk体积。
+        // vue: {
+        //   name: 'vue',
+        //   test: /[\\/]node_modules[\\/]vue(.*)[\\/]/,
+        //   chunks: 'initial',
+        //   priority: 20
+        // },
+        // libs: {
+        //   name: 'chunk-libs',
+        //   test: /[\\/]node_modules[\\/]/,
+        //   priority: 10, // 权重最低，优先考虑前面内容
+        //   chunks: 'initial'
+        // },
+        // // 默认缓存组名（merge上面默认配置）
         // default: {
         //   enforceSizeThreshold: 30000
         //   // minSize: 0,

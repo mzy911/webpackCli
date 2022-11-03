@@ -38,7 +38,7 @@ module.exports = {
   mode: 'production',
 
   // 能检测到行、列的报错
-  devtool: 'source-map',
+  // devtool: 'source-map',
 
   module: {
     rules: [
@@ -70,7 +70,7 @@ module.exports = {
   resolve: {
     mainFiles: ['index'], // 默认值是["index"]，意思是解析目录时，入口文件名是index
     // 解析同名文件的先后顺序，手动添加".ts" (默认为[".wasm",".mjs",".js",".json"])
-    extensions: ['.ts', '.js', '.jsx', '.json', '.less'],
+    extensions: ['.ts', '.js', 'vue', '.jsx', '.json', '.less'],
     // 别称
     alias: {
       '@': '/src/'

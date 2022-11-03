@@ -12,7 +12,8 @@ module.exports = {
   // 自定义全局变量
   globals: {
     _: true,
-    $: true
+    $: true,
+    utils: true
   },
 
   /**

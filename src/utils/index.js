@@ -1,3 +1,3 @@
-// const name = () => {
-//   console.log('张三')
-// }
+export const name = () => {
+  console.log('张三')
+}

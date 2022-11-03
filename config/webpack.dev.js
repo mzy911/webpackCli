@@ -34,12 +34,29 @@ module.exports = {
   // publicPath: '', // 相对于 HTML 页面（目录相同）
 
   // 能检测到行的报错
-  // 1、eval：开发环境下默认值，eval包裹每个module模块，每个模块后增加sourceURL（定位到行、列）
-  // 2、source-map：每个模块生成独立的sourcemap文件，module中sourceMappingURL链接（定位到行、列）
-  // 3、hidden-source-map：生成一个SourceMap文件，但是bundle中没有链接（找不到报错位置）
-  // 4、inline-source-map：bundle文件内部生成 'sourcemap' 关系（行、列信息）
-  // 5、cheap-source-map：生成一个没有列信息的 'sourcemap'（只有行信息）
-  // 6、cheap-module-source-map：同 cheap-source-map，会将 loader 的 source map 加入
+  // 1、内联 source-map
+  //    a、eval：较小
+  //       开发环境默认值，eval包裹每个module模块
+  //       sourceURL指向源文件地址
+  //       可以定位到行、列，与原文件不同（bundle中直接展开地址内容）
+  //    b、eval-source-map：较大
+  //       通过eval函数执行
+  //       sourceMap 通过base64编码后添加到了 "eval函数" 中
+  //       可以定位到行、列，与原文件相同
+  //    c、inline-source-map：较大
+  //       可以定位到行、列，与原文件相同
+  //       source map 通过base64编码后添加到了文件最 "尾处"
+  // 2、外联
+  //    a、cheap-source-map：只精确到行，对于有loader的情况，会不够准确
+  //    b、cheap-module-source-map：只精确到行，可以很好的处理有loader的情况
+  // 3、外联（不显示源码）
+  //    a、hidden-source-map：
+  //       生成一个SourceMap文件
+  //       但是bundle中没有引用（手动引入）
+  //    b、nosources-source-map
+  //       会生成source map
+  //       生成的source map只有错误信息的提示，不会生成源代码文件
+  //       会在控制台告诉错误的内容及文件，但是点击文件名的时候看不到源码
   devtool: 'cheap-module-source-map',
 
   // 开发服务器：webpack-dev-server（内存中）
@@ -98,7 +115,7 @@ module.exports = {
   resolve: {
     mainFiles: ['index'], // 默认值是["index"]，意思是解析目录时，入口文件名是index
     // 解析同名文件的先后顺序，手动添加".ts" (默认为[".wasm",".mjs",".js",".json"])
-    extensions: ['.ts', '.js', '.jsx', '.json', '.less'],
+    extensions: ['.ts', '.js', 'vue', '.jsx', '.json', '.less'],
     // 别称
     alias: {
       '@': path.resolve(__dirname, '../src')
