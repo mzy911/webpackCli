@@ -23,8 +23,8 @@ module.exports = {
      * 3、contenthash：文件级别
      */
     filename: 'static/js/[name].js', // "出口"名称（依赖入口）
-    chunkFilename: 'static/js/[name].chunk.js', // "chunk"名称、支持动态导入 import()
-    assetModuleFilename: 'static/media/[hash:10][ext][query]', // 图片、字体等（type:'asset'静态资源）
+    chunkFilename: 'static/js/[name][contenthash:8].chunk.js', // "chunk"名称、支持动态导入 import()
+    assetModuleFilename: 'static/media/[contenthash:8][ext][query]', // 图片、字体等（type:'asset'静态资源）
 
     // 告诉webpack打包出来的文件中，不使用箭头函数( 默认为立刻执行的箭头函数 )
     environment: {

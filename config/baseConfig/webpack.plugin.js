@@ -7,6 +7,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 const webpack = require('webpack')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   config: [
@@ -66,7 +67,27 @@ module.exports = {
         outputPath: '/dll/',
         publicPath: './dll'
       }
-    ])
+    ]),
+
+    // 将public下面的资源复制到dist目录去（除了index.html）
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../../public'),
+          to: path.resolve(__dirname, '../../dist/public'),
+          toType: 'dir',
+          noErrorOnMissing: true, // 不生成错误
+          globOptions: {
+            // 忽略文件
+            ignore: ['**/index.html']
+          },
+          info: {
+            // 跳过terser压缩js
+            minimized: true
+          }
+        }
+      ]
+    })
 
     // 分析包的依赖关系
     // new BundleAnalyzerPlugin()
