@@ -1,3 +1,10 @@
+// babel-loader： 在 webpack 里应用 babel 解析 ES6 的桥梁
+// @babel/core： babel 核心模块
+// @babel/preset-env： babel 预设，一组 babel 插件的集合
+// @babel/runtime
+// @babel/plugin-transform-runtime
+//   打包生成的全局辅助函数
+
 module.exports = {
   presets: [
     [
