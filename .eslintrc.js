@@ -1,17 +1,15 @@
 module.exports = {
-  // 环境变量(全局变量)
+  // 指定脚本运行的环境(预定义的全局变量)
   env: {
     es2021: true, // 声明js新的语法：WeakRef
     node: true, // 声明node下全局变量：__dirname
     browser: true, // 声明浏览器下全局变量：window、document
     commonjs: true
-    // jquery: true, // 项目中可以直接使用API: $('idname')
-    // lodash: true // 项目中可以直接使用API: $('idname')
   },
 
   // 自定义全局变量
   globals: {
-    _: true,
+    _: true, // readonly、writable、off、
     $: true,
     utils: true
   },
@@ -26,7 +24,7 @@ module.exports = {
 
   // 模块的解析规则
   parserOptions: {
-    ecmaVersion: 'latest', // js解析规则：，默认 3，5 （ 不设置，使用const关键词会报错）
+    ecmaVersion: 'latest', // 按照哪个js版本解析规则：，默认 3，5 使用const报错
     sourceType: 'module', // 模块化：es module
     ecmaFeatures: {
       globalReturn: true, //  允许在全局作用域下使用 return 语句
@@ -38,8 +36,8 @@ module.exports = {
   // 继承语法规则（  别人定义好的 ）
   extends: [
     // 'eslint:all' // eslint全部内置规则（285个，一般不用）
-    // 'eslint:recommended' //  eslint中的recommended规范（50多个，推荐使用）
-    'standard' // 第三方：标准规范 - eslint-config-standard 插件（200多个）
+    'eslint:recommended' //  eslint中的recommended规范（50多个，推荐使用）
+    // 'standard' // 第三方：标准规范 - eslint-config-standard 插件（200多个）
   ],
 
   // 自定义语法规则（覆盖extends）
