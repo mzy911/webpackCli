@@ -22,6 +22,7 @@ specifiers:
   eslint-plugin-n: ^15.0.0
   eslint-plugin-promise: ^6.0.0
   eslint-webpack-plugin: ^3.2.0
+  espree: ^9.4.0
   exports-loader: ^4.0.0
   file-loader: ^6.2.0
   html-webpack-plugin: ^5.5.0
@@ -78,6 +79,7 @@ devDependencies:
   eslint-plugin-n: 15.4.0_eslint@8.26.0
   eslint-plugin-promise: 6.1.1_eslint@8.26.0
   eslint-webpack-plugin: 3.2.0_dunuix3aagubcaxghlf2nuxzgy
+  espree: 9.4.0
   exports-loader: 4.0.0_webpack@5.74.0
   file-loader: r2.cnpmjs.org/file-loader/6.2.0_webpack@5.74.0
   html-webpack-plugin: r2.cnpmjs.org/html-webpack-plugin/5.5.0_webpack@5.74.0

@@ -1,9 +1,9 @@
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const os = require('os')
-const threads = os.cpus().length - 1
-const path = require('path')
+// const os = require('os')
+// const threads = os.cpus().length - 1
+// const path = require('path')
 const isProduction = process.env.NODE_ENV === 'production'
 
 // webpack优化处理

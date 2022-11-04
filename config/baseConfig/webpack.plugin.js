@@ -1,10 +1,10 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
-const os = require('os')
-const threads = os.cpus().length - 1 // 获取cpu的个数，每个cpu启动时间大概为600ms
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const WorkboxPlugin = require('workbox-webpack-plugin')
+// const os = require('os')
+// const threads = os.cpus().length - 1 // 获取cpu的个数，每个cpu启动时间大概为600ms
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+// const WorkboxPlugin = require('workbox-webpack-plugin')
 const webpack = require('webpack')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')

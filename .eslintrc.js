@@ -38,6 +38,7 @@ module.exports = {
     // 'eslint:all' // eslint全部内置规则（285个，一般不用）
     'eslint:recommended' //  eslint中的recommended规范（50多个，推荐使用）
     // 'standard' // 第三方：标准规范 - eslint-config-standard 插件（200多个）
+
   ],
 
   // 自定义语法规则（覆盖extends）
@@ -46,6 +47,18 @@ module.exports = {
     semi: [2, 'never'], // 行尾出现分号报错
     'comma-dangle': [2, 'never'], // "最后"出现逗号报错
     'no-unused-vars': [2, { vars: 'all', args: 'after-used' }], // 冗余变量
+    'no-multiple-empty-lines': ['error', { 'max': 2, 'maxBOF': 1 }], // 允许多个空行数量
+    'no-multi-spaces': 'error', // 连续使用多个空格
+    'array-bracket-spacing': ['error', 'never'], // 数组空格
+    'block-spacing': 'error', // 在代码块中开括号前和闭括号后有空格
+    'comma-spacing': ['error', { 'before': false, 'after': true }], // 逗号以后空格
+    'keyword-spacing': ['error', { 'after': true }], // 关键字之后空格
+    'no-mixed-spaces-and-tabs': 'error', // 禁止空格、tab混用
+    'space-before-blocks': ['error', 'never'], // 句块之前的空格
+    'spaced-comment': ['error', 'always'], // 注释前后空格
+    'semi-spacing': 'error', // 分号之后空格
+    'space-infix-ops': 'error', // 操作符
+    'key-spacing': ['error', { 'afterColon': true }], // 对象属性后空格
     quotes: [2, 'single'] // 单双引号：single、double
   },
 

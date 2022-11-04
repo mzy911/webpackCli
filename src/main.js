@@ -1,1 +1,4 @@
-console.log('main')
+const a = 'main'
+
+
+console.log('main', a)
