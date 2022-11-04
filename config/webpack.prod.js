@@ -38,7 +38,7 @@ module.exports = {
   mode: 'production',
 
   // 能检测到行、列的报错
-  // devtool: 'source-map',
+  devtool: 'source-map',
 
   module: {
     rules: [

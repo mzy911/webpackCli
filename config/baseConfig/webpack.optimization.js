@@ -50,7 +50,7 @@ module.exports = {
       // minChunks: 1,// 默认为1，至少引用一次被才能被拆分
       // maxAsyncRequests: 30, // 默认为30，按需加载时的最大并行请求数（超出数量被合并）
       // maxInitialRequests: 30, // 默认为30，入口点的最大并行请求数
-      // enforceSizeThreshold: 30000 // 默认 50000，强制执行拆分的体积阈值和其他限制
+      // enforceSizeThreshold: 50000 // 默认 50000，强制执行拆分的体积阈值和其他限制
       // automaticNameDelimiter: '~', //默认的连接符
       // name: true, // 设为true表示根据模块名和CacheGroup的key来自动生成,使用上面连接符连接
 
@@ -75,12 +75,12 @@ module.exports = {
         //   chunks: 'initial',
         //   priority: 20
         // },
-        // libs: {
-        //   name: 'chunk-libs',
-        //   test: /[\\/]node_modules[\\/]/,
-        //   priority: 10, // 权重最低，优先考虑前面内容
-        //   chunks: 'initial'
-        // },
+        libs: {
+          name: 'chunk-libs',
+          test: /[\\/]node_modules[\\/]/,
+          priority: 10, // 权重最低，优先考虑前面内容
+          chunks: 'initial'
+        }
         // // 默认缓存组名（merge上面默认配置）
         // default: {
         //   enforceSizeThreshold: 30000
