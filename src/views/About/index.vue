@@ -6,8 +6,8 @@
 
 <script>
 export default {
-    name:'About'
-};
+  name: 'about-page'
+}
 </script>
 
 <style scoped lang="less">

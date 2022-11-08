@@ -11,11 +11,11 @@
 <script>
 import {ElButton} from 'element-plus'
 export default {
-    name:'home',
-    components:{
-      ElButton
-    }
-};
+  name: 'home-page',
+  components: {
+    ElButton
+  }
+}
 </script>
 
 <style scoped lang="less">

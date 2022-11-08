@@ -1,7 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 
 const Home = () => import('../views/Home')
 const About = () => import('../views/About')
+const Derective = () => import('../views/Directive')
 
 export default createRouter({
   history: createWebHistory(),
@@ -13,6 +14,10 @@ export default createRouter({
     {
       path: '/about',
       component: About
+    },
+    {
+      path: '/directive',
+      component: Derective
     }
   ]
 })
