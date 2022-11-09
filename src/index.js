@@ -1,6 +1,7 @@
 import {createApp} from 'vue'
 import App from './App'
 import router from './router'
+import {createPinia} from 'pinia'
 
 // 整体引入：element-ui
 // import ElementPlus from 'element-plus'
@@ -27,4 +28,7 @@ Apps.directive('throttle', {
   }
 })
 
-Apps.use(router).mount(document.getElementById('app'))
+Apps.use(router)
+Apps.use(createPinia())
+
+Apps.mount(document.getElementById('app'))

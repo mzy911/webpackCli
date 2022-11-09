@@ -1,13 +1,15 @@
 <template>
   <div>
-    <h1>Vue</h1>
+    <h1 style="textAlign:center;">Vue</h1>
 
     <div>
       <router-link to="/home">Home</router-link>
-      &nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;
       <router-link to="/about">About</router-link>
-      &nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;
       <router-link to="/directive">Directive</router-link>
+      &nbsp;&nbsp;&nbsp;
+      <router-link to="/store">Store</router-link>
     </div>
 
     <router-view></router-view>

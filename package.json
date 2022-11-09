@@ -62,6 +62,7 @@
   },
   "dependencies": {
     "element-plus": "^2.2.19",
+    "pinia": "^2.0.23",
     "vue": "^3.2.41",
     "vue-router": "^4.1.6"
   }
