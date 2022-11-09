@@ -13,7 +13,7 @@ module.exports = {
     'no-var': 2,
     semi: [2, 'never'], // 行尾出现分号报错
     quotes: [2, 'single'], // 单双引号：single、double
-    indent: ['error', 2, {outerIIFEBody: 0}], // 缩进对齐两个空格
+    indent: ['error', 2, {outerIIFEBody: 2}], // 缩进对齐两个空格
     'comma-dangle': [2, 'never'], // "最后" 出现逗号报错
     'no-unused-vars': [2, {vars: 'all', args: 'after-used'}], // 冗余变量
     'no-multiple-empty-lines': ['error', {max: 2, maxBOF: 1}], // 允许多个空行数量

@@ -21,6 +21,8 @@ export default {
 <script setup>
 import {storeToRefs} from 'pinia'
 import {useMainStore} from '../../store/index'
+// import {watch} from 'vue'
+// import {pinia} from '../../index'
 const mainStore = useMainStore()
 
 // 使用 storeToRefs 包裹数据，可以进行结构
@@ -51,6 +53,20 @@ const changeCount = () => {
   mainStore.changeState()
 
 }
+
+// // 监听所有 pinia 中存储数据的变化
+// watch(pinia.state, (state) => {
+//   console.log('监听', state)
+
+// }, {deep: true})
+
+
+// 监听 pinia 中某个模块数据的变化
+mainStore.$subscribe((mutation, state) => {
+  console.log('监听变化')
+  // // 每当它发生变化时，将整个状态持久化到本地存储
+  // localStorage.setItem('cart', JSON.stringify(state))
+})
 
 
 </script> 
