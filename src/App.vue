@@ -10,6 +10,8 @@
       <router-link to="/directive">Directive</router-link>
       &nbsp;&nbsp;&nbsp;
       <router-link to="/store">Store</router-link>
+      &nbsp;&nbsp;&nbsp;
+      <router-link to="/composition">Composition</router-link>
     </div>
 
     <router-view></router-view>
@@ -20,7 +22,15 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  mounted (){
+    const rawPushState = window.history.pushState
+    window.history.pushState = (...args) => {
+      console.log('监听到pushState变化')
+      // 路由变化前doing
+      rawPushState.apply(window.history, args)  
+    }
+  }
 }
 </script>
 

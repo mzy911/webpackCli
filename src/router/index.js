@@ -4,6 +4,7 @@ const Home = () => import('../views/Home')
 const About = () => import('../views/About')
 const Derective = () => import('../views/Directive')
 const Store = () => import('../views/Store')
+const Composition = () => import('../views/Composition')
 
 export default createRouter({
   history: createWebHistory(),
@@ -27,6 +28,10 @@ export default createRouter({
     {
       path: '/store',
       component: Store
+    },
+    {
+      path: '/composition',
+      component: Composition
     }
   ]
 })
