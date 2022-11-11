@@ -43,6 +43,7 @@ const AppLayout = () => {
     const pathArr = []
     const breadArr = []
     const routes = matchRoutes(router, local.pathname)
+
     if (routes){
       for (let route of routes){
         const path = route.route.path
@@ -53,10 +54,15 @@ const AppLayout = () => {
         }
       }
     }
+
+
+    console.log('监听路由变化')
+
     setDefaultSelectedKeys(pathArr)
     setDefaultOpenKeys(pathArr)
     setBreadItem(breadArr)
     setInit(true)
+
   }, [local.pathname])
   if (!init) return null
 

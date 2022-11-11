@@ -12,6 +12,8 @@ const About = lazy(() => import(/* webpackChunkName:'About' */ '@/views/About/in
 const Refs = lazy(() => import(/* webpackChunkName:'Refs' */ '@/views/Refs/index'))
 const UseHook = lazy(() => import(/* webpackChunkName:'UseHook' */ '@/views/UseHook/index'))
 const Login = lazy(() => import(/* webpackChunkName:'Login' */ '@/views/Login/index'))
+const PageDetail = lazy(() => import(/* webpackChunkName:'PageDetail' */ '@/views/PageDetail/index'))
+const NoPage = lazy(() => import(/* webpackChunkName:'NoPage' */ '@/views/NoPage/index'))
 const lazyLoad = (children) => {
   // 懒加载组件必须配合 Suspense 使用
   return (
@@ -50,13 +52,16 @@ const router = [
       {path: '/memo-call-back', label: 'memoBack', element: lazyLoad(<MemoCallBack />)},
       {path: '/about', label: 'About', element: lazyLoad(<About />)},
       {path: '/refs', label: 'Refs', element: lazyLoad(<Refs />)},
-      {path: '/use-hook', label: 'Hook', element: lazyLoad(<UseHook />)}
+      {path: '/use-hook', label: 'Hook', element: lazyLoad(<UseHook />)},
+      {path: '/page-detail/:page', element: lazyLoad(<PageDetail />)}
     ]
   },
   {
     path: '/login',
     element: lazyLoad(<Login />)
-  }
+  },
+  {path: '*', element: lazyLoad(<NoPage />)}
+
 ]
 
 
