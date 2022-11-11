@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useRef} from 'react'
 import './index.less'
 
 const About = () => {
@@ -9,7 +9,6 @@ const About = () => {
     }, 3000)
   }   
   
-  console.log('更新')
   return (
     <div>
       <button

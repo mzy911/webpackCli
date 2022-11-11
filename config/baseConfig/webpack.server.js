@@ -8,7 +8,7 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:5500',
-        pathRewrite: { '^/api': '' }
+        pathRewrite: {'^/api': ''}
         // 请求拦截器，可以设置请求等信息
         // bypass: function (req, res, proxyOptions) {
         //   if (req.headers.accept.indexOf('html') !== -1) {

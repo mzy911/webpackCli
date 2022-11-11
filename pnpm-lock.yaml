@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@ant-design/icons': ^4.7.0
   '@babel/core': ^7.19.1
   '@babel/preset-env': ^7.19.1
   '@pmmmwh/react-refresh-webpack-plugin': ^0.5.8
@@ -48,6 +49,7 @@ specifiers:
   webpack-dev-server: ^4.11.1
 
 dependencies:
+  '@ant-design/icons': r2.cnpmjs.org/@ant-design/icons/4.7.0_biqbaboplfbrettd7655fr4n2y
   antd: 4.23.6_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0

@@ -1,15 +1,29 @@
-import React, {useEffect, memo} from 'react'
+import React, {memo} from 'react'
 
-const Son = ({changeCount}) => {
-  // console.log('pp')
-  console.log('changeCount')
-  // console.log('是否触发了子组件更新', arr)
+
+// useMemo
+const Son = ({arr}) => {
+  console.log('arr')
   return (
     <>
-      子组件
+      {
+        arr.map((item) => (
+          <div key={item.age}>姓名：{item.sex}, 年龄：{item.age}</div>
+        ))
+      }
     </>
   )
 }
+
+// useCallback
+// const Son = ({changeCount}) => {
+//   console.log('changeCount')
+//   return (
+//     <>
+//       子组件
+//     </>
+//   )
+// }
 
 
 export default memo(Son) 
