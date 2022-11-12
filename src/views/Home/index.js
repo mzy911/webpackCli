@@ -3,6 +3,8 @@ import {Outlet, Link} from 'react-router-dom'
 import './index.less'
 
 const Home = () => {
+
+
   return (
     <>
       {/* <img src="/public/辣椒.png" alt="" /> */}

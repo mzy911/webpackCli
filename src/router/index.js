@@ -1,5 +1,6 @@
 import React, {lazy, Suspense} from 'react'
 import AppLayout from '@/AppLayout/index'
+import {Navigate, Link} from 'react-router-dom'
 
 // 1、解决页面刷新闪屏
 // 2、Applayout 不使用懒加载
@@ -27,10 +28,14 @@ const router = [
   {
     path: '/',
     element: <AppLayout />,
+    
     children: [
+      // 使用Navigate进行路由的重定向
       {
         index: true,
-        element: lazyLoad(<Home />)
+        // element: lazyLoad(<Home />)
+        element: lazyLoad(<Navigate replace to='/home/car' />) 
+        // element: lazyLoad(<Navigate to='/home/car' />) 
       },
       {
         path: '/home',
@@ -45,7 +50,7 @@ const router = [
           {
             path: '/home/money',
             label: '房',
-            element: lazyLoad(<Money />)
+            element: lazyLoad(<Money much='1000亿'/>)
           }
         ]
       },
@@ -61,7 +66,6 @@ const router = [
     element: lazyLoad(<Login />)
   },
   {path: '*', element: lazyLoad(<NoPage />)}
-
 ]
 
 
