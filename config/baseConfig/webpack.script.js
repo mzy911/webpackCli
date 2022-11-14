@@ -1,17 +1,16 @@
 const path = require('path')
 const os = require('os')
-const { request } = require('http')
 const threads = os.cpus().length - 1
 
 const getScriptLoaders = (pre) => {
   return [
     // 开启多线程
-    // {
-    //   loader: 'thread-loader', // 开启多线程
-    //   options: {
-    //     works: threads // 线程数量
-    //   }
-    // },
+    {
+      loader: 'thread-loader', // 开启多线程
+      options: {
+        works: threads // 线程数量
+      }
+    },
 
     {
       loader: 'babel-loader',
@@ -29,6 +28,11 @@ const getScriptLoaders = (pre) => {
     // webpack4中使用loader、webpack5中使用plugin
     // {
     //   loader: 'eslint-loader',
+    //   enforce: "pre",
+    //   include: [path.resolve(__dirname, 'src')], // 指定检查的目录
+    //   options: { // 自动合并 eslintrc.js
+    //     ...
+    //   }
     // }
   ].filter(Boolean)
 }

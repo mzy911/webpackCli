@@ -18,6 +18,7 @@ Promise.resolve('ok').then((val) => {
   console.log('res', val)
 })
 
+
 // const fn = () => {
 //   return Promise.resolve().then(() => {
 //     return 'resolve'

@@ -7,7 +7,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 let cssExtract = 'style-loader' // 创建style标签 ，插入html中
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production'){
   cssExtract = MiniCssExtractPlugin.loader
 }
 

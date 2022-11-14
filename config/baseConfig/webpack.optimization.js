@@ -36,8 +36,9 @@ module.exports = {
           // }
         })
     ].filter(Boolean),
+    
 
-    // 拆分代码块、按需加载
+    // 模块拆分
     // 1、每个入口单独生成一个chunk
     // 2、动态导入会单独生成一个chunk
     // 3、手动配置规则，创建chunk

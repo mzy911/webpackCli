@@ -20,7 +20,7 @@ module.exports = {
    * @value：Babel-ESLint: 一个对Babel解析器的包装，使其能够与 ESLint 兼容
    * @value：@typescript-eslint/parser：将 TypeScript 转换成与 estree 兼容的形式
    */
-  parser: 'Espree',
+  // parser: 'Espree',
 
   // 模块的解析规则
   parserOptions: {
