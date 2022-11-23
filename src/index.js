@@ -1,4 +1,6 @@
-// import { name } from './test.ts'
+// import ts from './tsTemplat/01 - base.ts'
+import ts from './tsTemplat/02 - symbol.ts'
+console.log('ts', ts)
 
 // 使用全局注入的 jquery
 // $.each([52, 97], function (index, value) {
@@ -14,9 +16,9 @@
 // 解析ts文件
 // console.log('typescript', name)
 
-Promise.resolve('ok').then((val) => {
-  console.log('res', val)
-})
+// Promise.resolve('ok').then((val) => {
+//   console.log('res', val)
+// })
 
 
 // const fn = () => {

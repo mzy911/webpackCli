@@ -1,16 +1,16 @@
 const path = require('path')
-const os = require('os')
-const threads = os.cpus().length - 1
+// const os = require('os')
+// const threads = os.cpus().length - 1
 
 const getScriptLoaders = (pre) => {
   return [
-    // 开启多线程
-    {
-      loader: 'thread-loader', // 开启多线程
-      options: {
-        works: threads // 线程数量
-      }
-    },
+    // // 开启多线程
+    // {
+    //   loader: 'thread-loader' // 开启多线程
+    //   // options: {
+    //   //   works: threads // 线程数量
+    //   // }
+    // },
 
     {
       loader: 'babel-loader',
