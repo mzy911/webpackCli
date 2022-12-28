@@ -1,15 +1,15 @@
-const stylConfig = require('./baseConfig/webpack.style.js')
-const scriptConfig = require('./baseConfig/webpack.script.js')
-const staticConfig = require('./baseConfig/webpack.static')
-const serverConfig = require('./baseConfig/webpack.server')
-const pluginConfig = require('./baseConfig/webpack.plugin')
-const path = require('path')
+const stylConfig = require("./baseConfig/webpack.style.js")
+const scriptConfig = require("./baseConfig/webpack.script.js")
+const staticConfig = require("./baseConfig/webpack.static")
+const serverConfig = require("./baseConfig/webpack.server")
+const pluginConfig = require("./baseConfig/webpack.plugin")
+const path = require("path")
 
 module.exports = {
   // 入口使用 相对路径：在虚拟内存中运行与src并排 (并非相对于当前目录)
   entry: () => {
     // 项目启动、watch执行
-    return './src/index.js'
+    return "./src/index.ts"
   },
 
   output: {
@@ -17,12 +17,12 @@ module.exports = {
     path: undefined,
 
     // 入口文件的打包名称
-    filename: 'static/js/main.js', // 单入口打包，可以固定名称
-    chunkFilename: 'static/js/[name].chunk.js', // 打包出的chunk名称，支持动态导入 import()
-    assetModuleFilename: 'static/media/[hash:10][ext][query]' // 图片、字体等（type:'asset'静态资源）
+    filename: "static/js/main.js", // 单入口打包，可以固定名称
+    chunkFilename: "static/js/[name].chunk.js", // 打包出的chunk名称，支持动态导入 import()
+    assetModuleFilename: "static/media/[hash:10][ext][query]" // 图片、字体等（type:'asset'静态资源）
   },
 
-  mode: 'development',
+  mode: "development",
 
   // 浏览器加载资源前缀
   // publicPath: 'auto', // 默认
@@ -57,7 +57,7 @@ module.exports = {
   //       会生成source map
   //       生成的source map只有错误信息的提示，不会生成源代码文件
   //       会在控制台告诉错误的内容及文件，但是点击文件名的时候看不到源码
-  devtool: 'cheap-module-source-map',
+  devtool: "cheap-module-source-map",
 
   // 开发服务器：webpack-dev-server（内存中）
   devServer: serverConfig.config,
@@ -79,7 +79,7 @@ module.exports = {
           // 以json5的文件形式给json文件添加注释
           {
             test: /\.json5$/,
-            loader: 'json5-loader'
+            loader: "json5-loader"
           }
         ]
       }
@@ -113,12 +113,12 @@ module.exports = {
 
   // 解析模块规则
   resolve: {
-    mainFiles: ['index'], // 默认值是["index"]，意思是解析目录时，入口文件名是index
+    mainFiles: ["index"], // 默认值是["index"]，意思是解析目录时，入口文件名是index
     // 解析同名文件的先后顺序，手动添加".ts" (默认为[".wasm",".mjs",".js",".json"])
-    extensions: ['.ts', '.js', 'vue', '.jsx', '.json', '.less'],
+    extensions: [".ts", ".js", "vue", ".jsx", ".json", ".less"],
     // 别称
     alias: {
-      '@': path.resolve(__dirname, '../src')
+      "@": path.resolve(__dirname, "../src")
     }
   }
 }

@@ -1,27 +1,133 @@
 {
   "compilerOptions": {
-    "target": "esnext", // 编译后生成js的版本（ES5、ES6、ES2015、ES2016、ES2017、ESNext）
-    "module": "esnext", // 编译后模块系统（ESM、CommonJS、AMD、esnex...）
-    "strict": true ,// 启用所有严格类型检查选项
-    "lib": ["dom", "dom.iterable", "esnext"], // 指定项目中依赖的库（如：DOM相关操作使用dom）
-    // "alwaysStrict": true, // 编译后的文件，是否开启严格模式( import、export本身就是严格模式)
-    // "noImplicitAny": false, // 在表达式和声明上有隐含的 any类型时报错
-    // "noImplicitThis": false // 当this表达式的值为 any类型的时候报错
-    // "strictNullChecks": true, // 严格检查空值
-    // "noEmit": true, // 不生成编译后的文件
-    // "noEmitOnError": true, // 有报错时，不生成编译后的文件
-    // "removeComments": true, // 是否去掉注释
-    "checkJs": true, // 检查js是否符合ts规范
-    // "allowJs": true, // 是否允许编译 js 文件
-    // "outDir": "./dist", // 指定输出的"文件夹"
-    // "outFile": "./dist/app.js" // 所有文件编译后合成一个app.js文件（module为amd、system模式下使用）
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    /* Projects */
+    // "incremental": true,                              
+    // "composite": true,                                
+    // "tsBuildInfoFile": "./.tsbuildinfo",              
+    // "disableSourceOfProjectReferenceRedirect": true, 
+    // "disableSolutionSearching": true,                 
+    // "disableReferencedProjectLoad": true,             
+
+
+
+    /* Language and Environment */
+    "target": "esnext", // 编译成js的版本（ES5、ES6、...、ES2017、ESNext）                               
+    "lib": [ // 指定项目中依赖的库
+      "dom", // 如：DOM相关操作使用dom
+      "dom.iterable", 
+      "esnext"
+    ],                                      
+    // "jsx": "preserve", // 制定 jsx 的开发环境（preserve、react-native、react）                               
+    "experimentalDecorators": true,  // 是否启用试验特性                
+    // "emitDecoratorMetadata": true,                    
+    // "jsxFactory": "",                                 
+    // "jsxFragmentFactory": "",                         
+    // "jsxImportSource": "",                            
+    // "reactNamespace": "",                             
+    // "noLib": true,                                    
+    // "useDefineForClassFields": true,                  
+    // "moduleDetection": "auto",                        
+
+
+
+    /* Modules */
+    "module": "esnext", // 编译后模块系统（ESM、CommonJS、AMD、esnex...）                              
+    // "rootDir": "./", // 入口跟路径                                  
+    "moduleResolution": "node", // 导入自定义模块：typngs                       
+    "baseUrl": "./src", // 跟路径
+    "paths": { // 各个模块路径
+      // "*":["node_modules/@types",  "typings/*"],
+      ":module": ["typings/module.d.ts"]
+    },                                    
+    // "rootDirs": [],  // 构建好的文件存放跟路径                                
+    // "typeRoots": ["./typings"],  // 如果指定了typeRoots，只有typeRoots下面的包才会被包含进来                                
+    // "types": ["node", "lodash", "express"],  // 默认所有可见的"@types"                                    
+    // "allowUmdGlobalAccess": true,                     
+    // "moduleSuffixes": [],                             
+    // "resolveJsonModule": true,                        
+    // "noResolve": true,                                
+
+    /* JavaScript Support */
+    "allowJs": true, // 是否允许编译 js 文件                                  
+    "checkJs": true, // 检查js是否符合ts规范                                
+    // "maxNodeModuleJsDepth": 1,  
+    
+    
+
+    /* Emit */
+    // "declaration": true, // 编译的时候是否生成 .d.ts 文件                             
+    // "declarationMap": true,                           
+    // "emitDeclarationOnly": true,                      
+    // "sourceMap": true,                                
+    //  "outFile": "./dist/app.js" // 所有文件编译后合成一个app.js文件,仅支持 "amd" 和 "system" 模块                         
+    // "outDir": "./", // 目录下的文件永远会被编译器排除，除非使用 files                              
+    // "removeComments": true, // 是否去掉注释                          
+    // "noEmit": true,  // 不生成编译后的文件                                  
+    // "importHelpers": true,                            
+    // "importsNotUsedAsValues": "remove",               
+    // "downlevelIteration": true,                       
+    // "sourceRoot": "",                                 
+    // "mapRoot": "",                                    
+    // "inlineSourceMap": true,                          
+    // "inlineSources": true,                            
+    // "emitBOM": true,                                  
+    // "newLine": "crlf",                                
+    // "stripInternal": true,                            
+    // "noEmitHelpers": true,                            
+    // "noEmitOnError": true, // 有报错时，不生成编译后的文件                            
+    // "preserveConstEnums": true,                       
+    // "declarationDir": "./",                           
+    // "preserveValueImports": true,                     
+
+
+
+    /* Interop Constraints */
+    // "isolatedModules": true,                          
+    // "allowSyntheticDefaultImports": true,             
+    "esModuleInterop": true, // 通过导入内容创建命名空间，实现 CommonJs 和 ESM 模块之间的相互操作                            
+    // "preserveSymlinks": true,                         
+    "forceConsistentCasingInFileNames": true,  
+    
+    
+
+    /* Type Checking */
+    "strict": true,                                      
+    // "noImplicitAny": true, // 在表达式和声明上有隐含的 any类型时报错                         
+    // "strictNullChecks": true, // 是否可以赋值为null、undefined                        
+    // "strictFunctionTypes": true,                      
+    // "strictBindCallApply": true,                      
+    // "strictPropertyInitialization": true,             
+    // "noImplicitThis": true, // 闭包函数内this为any时报错，使用interface定义接口进行处理                           
+    // "useUnknownInCatchVariables": true,               
+    // "alwaysStrict": true, // 编译后的文件，是否开启严格模式( import、export本身就是严格模式)                           
+    // "noUnusedLocals": true,                           
+    // "noUnusedParameters": true,                       
+    // "exactOptionalPropertyTypes": true,               
+    // "noImplicitReturns": true,                        
+    // "noFallthroughCasesInSwitch": true,               
+    // "noUncheckedIndexedAccess": true,                 
+    // "noImplicitOverride": true,                       
+    // "noPropertyAccessFromIndexSignature": true,     
+    // "allowUnusedLabels": true,                        
+    // "allowUnreachableCode": true,   
+    
+    
+
+    /* Completeness */
+    // "skipDefaultLibCheck": true,                      
+    "skipLibCheck": true                                 
   },
-  // "files": ["a.ts", "b.ts", "c.ts"], // 指定编译”文件“，不受exclude影响
-  "include": [
-    "src/**/*.ts",
-    "css.d.ts",
-    "typings/**/*"
-  ], // 指定编译”文件夹“（默认为根目录）
-  "exclude": ["node_modules", "dist"] // 禁止某些文件被编译，过滤include（默认node_modules...）
-  // "extends": "./base.json" // 继承base.json文件中的配置
+  // "files": [], // 指定的文件，不管"exclude"如何设置
+  "include": [ // 指定编译”文件夹“（默认为根目录）
+    "src/*.ts", 
+    "src/**/*.ts", 
+    "src/**/*.d.ts"
+  ],
+  // "exclude": [
+  //   "node_modules", 
+  //   "**/*.spec.ts"
+  // ],
+  // "extends": "" // 继承其他 tsconfig.json 文件的配置
 }

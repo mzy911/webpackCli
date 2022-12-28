@@ -1,4 +1,4 @@
-const a = 'main'
+const a = "main"
 
 
-console.log('main', a)
+console.log("main", a)

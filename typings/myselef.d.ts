@@ -1,1 +1,0 @@
-declare const dapeng = '大鹏'

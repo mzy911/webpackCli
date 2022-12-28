@@ -1,6 +1,11 @@
-// import ts from './tsTemplat/01 - base.ts'
-import ts from './tsTemplat/02 - symbol.ts'
-console.log('ts', ts)
+import ts from "./typescript/05 - 高级类型"
+// 对象形式：namespace
+
+
+console.log("ts", ts)
+// console.log("jquery", $)
+// console.log("lala", document.getElementById("box"))
+
 
 // 使用全局注入的 jquery
 // $.each([52, 97], function (index, value) {

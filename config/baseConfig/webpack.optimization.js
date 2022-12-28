@@ -1,10 +1,10 @@
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const TerserPlugin = require("terser-webpack-plugin")
 // const os = require('os')
 // const threads = os.cpus().length - 1
 // const path = require('path')
-const isProduction = process.env.NODE_ENV === 'production'
+const isProduction = process.env.NODE_ENV === "production"
 
 // webpack优化处理
 module.exports = {
@@ -14,8 +14,8 @@ module.exports = {
       // 将 CSS 从你的 bundle 中分离出来
       isProduction &&
         new MiniCssExtractPlugin({
-          filename: 'static/css/[name].css', // 抽离后的文件名称
-          chunkFilename: 'static/css/[name].chunk.css' // 拆分、动态导入后的文件名称
+          filename: "static/css/[name].css", // 抽离后的文件名称
+          chunkFilename: "static/css/[name].chunk.css" // 拆分、动态导入后的文件名称
         }),
 
       // 压缩css
@@ -44,7 +44,7 @@ module.exports = {
     // 3、手动配置规则，创建chunk
     // 4、作用：拆分chunk、独自第三方模块让浏览器形成缓存(内容不变)
     splitChunks: {
-      chunks: 'all', // 默认为async async | all | initial
+      chunks: "all", // 默认为async async | all | initial
       // 以下为默认值
       // minSize: 20000, // 默认20000，生成 chunk 的最小体积
       // minRemainingSize: 0, // 类似于明Size，默认为0，避免拆分后的文件为0
@@ -77,10 +77,10 @@ module.exports = {
         //   priority: 20
         // },
         libs: {
-          name: 'chunk-libs',
+          name: "chunk-libs",
           test: /[\\/]node_modules[\\/]/,
           priority: 10, // 权重最低，优先考虑前面内容
-          chunks: 'initial'
+          chunks: "initial"
         }
         // // 默认缓存组名（merge上面默认配置）
         // default: {

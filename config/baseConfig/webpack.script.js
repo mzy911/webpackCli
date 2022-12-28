@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require("path")
 // const os = require('os')
 // const threads = os.cpus().length - 1
 
@@ -13,9 +13,9 @@ const getScriptLoaders = (pre) => {
     // },
 
     {
-      loader: 'babel-loader',
+      loader: "babel-loader",
       options: {
-        include: path.resolve(__dirname, '../../src'),
+        include: path.resolve(__dirname, "../../src"),
         exclude: /node_modules/,
         cacheDirectory: true, // 开启babel缓存(默认缓存路径：node_modules/.catch...)
         cacheCompression: false // 关闭缓存文件压缩
@@ -47,10 +47,11 @@ module.exports = {
 
     // 处理ts文件
     {
-      test: /\.ts$/,
-      use: getScriptLoaders('ts-loader')
+      test: /\.d\.ts$|\.ts$/,
+      use: getScriptLoaders("ts-loader")
     }
-
+    
+   
     // 给某个某块提供 window 对象
     // {
     //   test: require.resolve('../../src/index.js'),
