@@ -70,7 +70,7 @@ module.exports = {
   resolve: {
     mainFiles: ['main'], // 默认值是["index"]，意思是解析目录时，入口文件名是index
     // 解析同名文件的先后顺序，手动添加".ts" (默认为[".wasm",".mjs",".js",".json"])
-    extensions: ['.ts', '.js', '.jsx', '.json', '.less'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.json', '.less'],
     // 别称
     alias: {
       '@': '/src/'

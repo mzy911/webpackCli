@@ -1,23 +1,48 @@
 {
   "compilerOptions": {
+
+    // 基础配置
+    "sourceMap": true,
+    "strict": true, // 启用所有严格类型检查选项
     "target": "esnext", // 编译后生成js的版本（ES5、ES6、ES2015、ES2016、ES2017、ESNext）
-    "module": "esnext" // 编译后模块系统（ESM、CommonJS、AMD、esnex...）
-    // "strict": true // 启用所有严格类型检查选项
-    // "lib": ["dom", "dom.iterable", "esnext"], // 指定项目中依赖的库（如：DOM相关操作使用dom）
-    // "alwaysStrict": true, // 编译后的文件，是否开启严格模式( import、export本身就是严格模式)
-    // "noImplicitAny": false, // 在表达式和声明上有隐含的 any类型时报错
-    // "noImplicitThis": false // 当this表达式的值为 any类型的时候报错
-    // "strictNullChecks": true, // 严格检查空值
-    // "noEmit": true, // 不生成编译后的文件
-    // "noEmitOnError": true, // 有报错时，不生成编译后的文件
-    // "removeComments": true, // 是否去掉注释
-    // "checkJs": true, // 检查js是否符合ts规范
-    // "allowJs": true, // 是否允许编译 js 文件
-    // "outDir": "./dist", // 指定输出的"文件夹"
-    // "outFile": "./dist/app.js" // 所有文件编译后合成一个app.js文件（module为amd、system模式下使用）
+    "module": "esnext", // 编译后模块系统（ESM、CommonJS、AMD、esnex...）
+    "jsx": "react-jsx", // 在 .tsx文件里支持JSX
+    "noImplicitAny": false, // 不允许隐式的any类型
+    "incremental": true, // 只编译修改过的文件
+
+    // 模块相关：导入、导出
+    // "outDir": "./dist/", // 不生成文件，只做类型检查
+    //  "outFile":"./dist/index.js",// 当module设置为 'amd' and 'system'的时候使用
+    // "noEmit":false,
+    "allowSyntheticDefaultImports":true, // 允许模块使用 “export =“ 声明的
+    "moduleResolution":"node", // 可以使用 import 语法导入模块
+    "lib": [ // 列出了所有编译期间需要包含进来的库文件,通过这些库文件我们能够告诉ts编译器哪些功能能够使用
+      "dom", // document.getElementById("root")
+      "dom.iterable",
+      "esnext"
+    ],
+  
+
+    // ********  此处配置没起作用  ********
+    // ********  此处配置没起作用  ********
+    // 映射路径：baseUrl + paths
+    // "baseUrl": "./src", // // 工作根目录
+    // "paths": {
+    //   /*路径映射的集合*/
+    //   "*": ["*"],
+    // }
+
+    //   "declaration": true, // 是否自动创建类型声明文件
+    //   "declarationDir": "./lib", // 类型声明文件的输出目录
+    //   "allowJs": true, // 允许编译javascript文件。
+    //   "checkJs": true,//是否检测js是否符合ts语法，默认false
+    //   "noEmit": false,//是否生成编译后的代码 true：不生成；false生成 
+    //   "noEmitOnError": true.//语法报错时，不生成编译后的代码
   },
+
   // "files": ["a.ts", "b.ts", "c.ts"], // 指定编译”文件“，不受exclude影响
-  "include": ["src/**/*.ts"], // 指定编译”文件夹“（默认为根目录）
+  "include": ["src/**/*.ts", "src/**/*.tsx"], // 指定编译”文件夹“（默认为根目录）
   "exclude": ["node_modules", "dist"] // 禁止某些文件被编译，过滤include（默认node_modules...）
   // "extends": "./base.json" // 继承base.json文件中的配置
+
 }

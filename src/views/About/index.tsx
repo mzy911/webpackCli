@@ -1,12 +1,12 @@
-import React, {useRef} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import './index.less'
 
+import '@/public/styles/global.less'
+
 const About = () => {
-  
-  console.log('更新')
   return (
-    <div>
+    <div className='mt_20 b_red'>
       <Link to='/page-detail/1'> 去详情页</Link>
     </div>
   )

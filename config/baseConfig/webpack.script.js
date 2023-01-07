@@ -46,7 +46,7 @@ module.exports = {
       }
     },
     {
-      test: /\.ts$/,
+      test: /\.(ts|tsx)?$/,
       use: [
         {
           // .babelrc 中的配置对此处起作用
