@@ -1,14 +1,18 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './index.less'
-import $ from 'jquery'
 
 import '@/public/styles/global.less'
 
 const About = () => {
 
+  const person1:Person = {
+    name: 'sss',
+    age: 18
+  }
+
   
-  console.log('keyPartial', $)
+  console.log('keyPartial', person1)
 
   
   return (
