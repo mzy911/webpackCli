@@ -1,4 +1,4 @@
-import ts from "./typescript/05 - 高级类型"
+import ts from "./typescript/04 - 泛型"
 // 对象形式：namespace
 
 
@@ -9,7 +9,7 @@ console.log("ts", ts)
 
 // 使用全局注入的 jquery
 // $.each([52, 97], function (index, value) {
-//   console.log('jquery', index + ': ' + value)
+//   console.log('jquery', index + ': ' + value)p
 // })
 
 // 使用全局注入的 lodash

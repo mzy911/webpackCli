@@ -7,12 +7,12 @@ class Animal{
   // 3、子类可以访问
   name: string
 
-  // 私有属性
-  // 1、是有自身可以访问
-  private age:number
-
   // 只读属性，只能修饰属性
   readonly id:string
+
+  // 私有属性
+  // 1、只有自身可以访问
+  private age:number
 
   // 受保护的属性
   // 1、自身可以访问

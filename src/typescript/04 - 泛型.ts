@@ -17,7 +17,7 @@ function variateIdentity<T> (arg:T[]): T[]{
   return arg
 }
 variateIdentity(["a", "b"])
-variateIdentity([1, 2])
+variateIdentity([1, "2"])
 
 
 
@@ -46,15 +46,19 @@ console.log("泛型类型", myIdentity(123))
 
 
 
-// 5、泛型约束：extends、type
+// 5、泛型约束
 // 定义接口，约束泛型的类型
 interface Lengthwise {
   length: number;
 }
 function constraintIdentity<T extends Lengthwise> (arg: T): T{
-  console.log(arg.length) // Now we know it has a .length property, so no more error
+  console.log("参数长度：", arg.length) // Now we know it has a .length property, so no more error
   return arg
 }
+// 数字会报错
+// constraintIdentity(123)
+
+// 字符串具有length属性，不会报错
 constraintIdentity("constraintIdentity")
 
 
@@ -65,9 +69,21 @@ interface Person {
   name:string,
   age:number
 }
-type K1 = keyof Person
-type K2 = keyof Person[]
-type K3 = {[x:string]:Person}
+type K1 = keyof Person // "name" | "age"
+type K2 = keyof Person[] // number | "length" | "push" | "concat" | ...
+type K3 = {[x:string]:Person} // string | number
+
+const k2:K2 = "length"
+const k3:K3 = {
+  prop: {
+    name: "张三",
+    age: 12
+  }
+}
+console.log("k2", k2)
+console.log("k3", k3)
+
+
 
 // 6.2 介绍 类型参数
 function getProperty<T, K extends keyof T> (obj: T, key: K){

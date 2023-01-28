@@ -34,10 +34,11 @@ module.exports = {
     } 
   },  
 
+
   // 继承语法规则（  别人定义好的 ）
   extends: [
     // 'eslint:all' // eslint全部内置规则（285个，一般不用）
-    // "eslint:recommended" //  eslint中的recommended规范（50多个，推荐使用）
+    "eslint:recommended" //  eslint中的recommended规范（50多个，推荐使用）
     // 'standard' // 第三方：标准规范 - eslint-config-standard 插件（200多个）
 
   ],

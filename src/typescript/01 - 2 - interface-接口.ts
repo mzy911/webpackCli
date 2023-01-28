@@ -25,16 +25,16 @@ let per:Person = {
 // 2、数组
 // 2.1 注解方式
 let listArray1: (number | string)[] = [1, 2, 3]
+
 // 2.2 泛型方式
 let listArray2: Array<number | string> = [1, "2", 3]
+
 // 2.3 接口方式
 interface ListArray3 {
   [index:number]:number | string
 }
 
-
-
-// 3、类数组
+// 2.4、类数组
 interface Args {
   [index:number]:any,
   length:number,
@@ -43,14 +43,14 @@ interface Args {
 
 
 
-// 4、函数
-// 4.1 注解方式
+// 3、函数
+// 3.1 注解方式
 function test (source: string, subString: string): boolean{
   let result = source.search(subString)
   return result > -1
 }
 
-// 4.2 interface方式
+// 3.2 interface 方式1
 interface SearchFunc {
   (source: string, subString: string): boolean;
 }
@@ -59,9 +59,16 @@ let mySearch: SearchFunc = function (source, subString){
   return result > -1
 }
 
+// 3.3  interface 方式2
+interface PersonDetail {
+  name? :string,
+  age? :number,
+  detail?(name:string, age:number):string, // 普通函数
+}
 
 
-// 5、继承：extends
+
+// 4、继承：extends
 interface Shape {
   color: string;
 }
@@ -79,7 +86,7 @@ console.log("square", square)
 
 
 
-// 6、可索引的类型
+// 5、可索引的类型
 // class Animal1{
 //   name: string
 // }
@@ -94,7 +101,7 @@ console.log("square", square)
 
 
 
-// 7、类类型：implements 
+// 6、类类型：implements - 工具、器具、用具、 家具、服装、装备、手段
 interface ClockInterface {
   currentTime: Date;
   setTime(d: Date):void;
