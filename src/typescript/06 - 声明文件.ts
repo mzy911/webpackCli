@@ -4,8 +4,8 @@ import {Foo, Person} from ":module"
 //    1.1 直接引入 CND, 需要自定义类型
 //    1.2 typings/global.d.ts 
 //    1.3 定义第三方插件变量
-// console.log("JQuery", jQuery("#box")) ; // index.html 中引入的全局库
-// console.log("小明", foo) // index.html 中引入的自定义js文件
+//        console.log("JQuery", jQuery("#box")) ; // index.html 中引入的全局库
+//        console.log("小明", foo) // index.html 中引入的自定义js文件
 
 
 

@@ -133,12 +133,25 @@ function area (s: Shape){
   }
 }
 
+// *****************************************   重点  ********************************************
+// *****************************************   重点  ********************************************
+// *****************************************   重点  ********************************************
+// *****************************************   重点  ********************************************
+// *****************************************   重点  ********************************************
 
-// 7、索引类型：keyof
-//    a、JavaScript通过 Object.keys()获取对象的所有属性键值，不会映射 undefined、null、never
-//    b、typescript主要关注的是类型操作，通过 keyof 操作符可以获取对象中的所有键类型组成的联合类型
+interface Info {
+  name:string,
+  age:number,
+  sex:string
+}
 
-// 7.1 基础用法：遍历属性
+
+
+//* 1、 keyof：索引类型
+//   a、JavaScript通过 Object.keys()获取对象的所有属性键值，不会映射 undefined、null、never
+//   b、typescript主要关注的是类型操作，通过 keyof 操作符可以获取对象中的 "所有键类型组成的联合类型"
+
+// 1.1 基础用法：遍历属性
 type Person = {
   id: number;
   name: string;
@@ -146,24 +159,16 @@ type Person = {
 };
 type P1 = keyof Person; // 'id' | 'name' | 'age'
 
-
-// 7.2 实际应用：获取属性值
+// 1.2 实际应用：获取属性值
 type P2 = Person[keyof Person]; // number | string
 
-
-// 7.3 约束范型参数的范围
+// 1.3 约束范型参数的范围
 type MyPick<T, K extends keyof T> = { [P in K]: T[P] };
 type P3 = MyPick<Person, "id" | "age">
 
 
-// 7.4 和映射类型组合实现某些功能
-interface Info {
-  name:string,
-  age:number,
-  sex:string
-}
 
-// 7.4.1 Readonly：只读内置关键字
+//* 2、 Readonly：只读内置关键字
 // type Readonly<T> = {
 //   readonly [P in keyof T]: T[P];
 // }
@@ -173,37 +178,47 @@ const info1:Readonly<Info> = {
   sex: "男" 
 }
 
-// 7.4.2 Partial：可选内置关键字
+
+
+//* 3、 Partial：可选内置关键字
 // type Partial<T> = {
 //   [P in keyof T]?: T[P];
 // }
-// const info2:Partial<Info> = {
-//   name: "sss",
-//   age: 18
-// }
-
-// 7.4.3 Pick：匹配部分对象
-type Pick<T, K extends keyof T> = {
-  [P in K]: T[P];
+const info2:Partial<Info> = {
+  name: "sss"
 }
+
+
+
+//* 4、 Pick：匹配部分对象
+// type Pick<T, K extends keyof T> = {
+//   [P in K]: T[P];
+// }
 const info3:Pick<Info, "name"> = {
   name: "sss"
 }
-// console.log("info3", info3)
-// function pick<T, K extends keyof T> (obj:T, keys:K[]):Pick<T, K>{
-//   const res:any = {}
-//   keys.map((key) => {
-//     res[key] = obj[key]
-//   })
-//   return res
-// }
-// console.log("LaLa", pick(info1, ["name", "sex"]))
-
-
-// 7.4.4 Record：对象转换
-type Record<K extends string, T> = {
-  [P in K]: T;
+const info33:Pick<Info, keyof Info> = {
+  name: "sss",
+  age: 16,
+  sex: "男"
 }
+
+
+
+//* 5、 Omit：找到泛型 T 中除了 K 以外的其他属性
+const omitInfo:Omit<Info, "name"> = {
+  age: 16,
+  sex: "男"
+}
+
+
+
+//* 6、 Record：将 K 的每一个值都定义为 T 类型
+// type Record<K extends string, T> = {
+//   [P in K]: T;
+// }
+// 参数一：string、联合类型
+// 参数二：对象、stirng、number
 const infoRecord:Record<"nihao", Info> = {
   nihao: {
     name: "sss",
@@ -211,42 +226,90 @@ const infoRecord:Record<"nihao", Info> = {
     sex: "男" 
   }
 }
-console.log("infoRecord", infoRecord)
-// function myObject<K extends string | number, T, U> (obj:Record<K, T>, f:(x:T)=>U):Record<K, U>{
-//   const res:any = {}
-//   for (const key in obj){
-//     res[key] = f(obj[key])
-//   }
-//   return res
-// }
-// const names = {0: "hello", 1: "world", 2: "bye"}
-// const lengths = myObject(names, (s) => s.length)
-// console.log("lengths", lengths)
+
+type state = "created" | "submitted"
+const infoRecord1:Record<state, Info> = {
+  created: {
+    name: "sss",
+    age: 18,
+    sex: "男" 
+  },
+  submitted: {
+    name: "sss",
+    age: 18,
+    sex: "男" 
+  }
+}
 
 
-// 8、由映射类型进行推断：拆包
-// function unproxify<T> (t: Proxify<T>): T{
-//   let result = {} as T
-//   for (const k in t){
-//     result[k] = t[k].get()
-//   }
-//   return result
-// }
-// let originalProps = unproxify(proxyProps)
+
+//* 7、由映射类型进行推断：封装、拆包
+// 第一步：封装
+type Proxy<T> = {
+  get():T,
+  set(value:T):void
+}
+type Proxify<T> = {
+  [ P in keyof T ]:Proxy<T[P]>
+}
+function proxify<T> (obj:T):Proxify<T>{
+  const result = {} as Proxify<T>
+  // 给每个属性添加get和set存取器方法
+  for (const key in obj){ 
+    result[key] = {
+      get: () => obj[key],
+      set: (value) => obj[key] = value
+    }
+  }
+  return result
+}
+let props = {
+  name: "zzz",
+  age: 18
+}
+let proxyProps = proxify(props)
+proxyProps.name.set("zzq")
+console.log("包装", proxyProps) // 'zzq'
+
+// 第二部：拆包
+function unproxify<T> (t: Proxify<T>): T{
+  let result = {} as T
+  // 去掉每个属性的get和set方法
+  for (const k in t){
+    result[k] = t[k].get()
+  }
+  return result
+}
+let originalProps = unproxify(proxyProps)
+console.log("拆包", originalProps)
 
 
-// 9、增加、移除 修饰符：readonly、?
+
+// 8、增加、移除 修饰符：readonly?
+
 
 
 // 10、unknown
 
+
+
 // 11、extends
+
+
 
 // 12、infer
 
-// 13、Exclude
 
-// 14、Extract
+
+// 13、Exclude：从T中剔除可以赋值给U的类型
+type T1 = Exclude<"a" | "b" | "c", "a" | "b">  
+// type T1 = "c"
+
+
+
+// 14、Extract：类型交集 和 Exclude相反
+type T2 = Extract<"a" | "b" | "c", "a" | "b">  
+// type T2 = "a" | "b"
 
 
 

@@ -11,7 +11,7 @@ console.log("output2", output2)
 
 
 
-// 2、泛型变量
+// 2、泛型变量：接收类型参数T 和 参数arg
 function variateIdentity<T> (arg:T[]): T[]{
   console.log("泛型变量", arg)  
   return arg
@@ -73,6 +73,7 @@ type K1 = keyof Person // "name" | "age"
 type K2 = keyof Person[] // number | "length" | "push" | "concat" | ...
 type K3 = {[x:string]:Person} // string | number
 
+const k1:K1 = "name"
 const k2:K2 = "length"
 const k3:K3 = {
   prop: {

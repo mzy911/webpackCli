@@ -25,12 +25,12 @@ interface IStudent extends IUser {
 
 
 // 2、不同点
-//  a、
+//  a、数据类型不同
 //    type("类型别称") 可以声明基本数据类型，联合类型，数组等; 
 //    interface 声明的是 "变量"
-//  b、
+//  b、同名现象不同
 //    当出现使用 type 和 interface 声明同名的数据时; 
-//    type会直接报错; interface会进行组合
+//    type会直接报错、interface会进行组合
 
 // 2.1、type可以声明基本数据类型，联合类型，数组等；interface只能声明对象类型
 type age = number;

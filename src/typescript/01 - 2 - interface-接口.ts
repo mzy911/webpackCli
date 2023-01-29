@@ -106,6 +106,8 @@ interface ClockInterface {
   currentTime: Date;
   setTime(d: Date):void;
 }
+
+// 给类定义：属性、原型方法
 class Clock implements ClockInterface{
   currentTime = new Date()
   setTime (d: Date){
