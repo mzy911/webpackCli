@@ -95,7 +95,8 @@ module.exports = {
     "space-infix-ops": "error", // 操作符
     "key-spacing": ["error", {afterColon: true}], // 对象属性后空格(冒号后)
     "arrow-spacing": "error", // 箭头函数前后空格
-    "space-before-function-paren": ["error", {anonymous: "always", named: "always"}] // 函数
+    "space-before-function-paren": ["error", {anonymous: "always", named: "always"}], // 函数
+    "no-redeclare": "off"
   },
 
   // 解决动态导入语法报错：import('@/utils/a.js')
