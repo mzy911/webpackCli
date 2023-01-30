@@ -1,3 +1,31 @@
+// 配置 eslint 的步骤
+// 1、安装 eslint
+//    pnpm i eslint -D
+
+// 2、初始化 eslint 配置文件，会有自定义选择项
+//    npx eslint --init 
+//    npm init @eslint/config
+
+// 3、配置文件：.eslintrc
+
+// 4、忽略文件：.eslintignore
+
+// 5、vscode 配置
+// "editor.codeActionsOnSave": {
+//   "source.fixAll.eslint": true
+// },
+// "eslint.validate": [
+//   "javascript", // 用eslint的规则检测js文件
+//   "javascriptreact",
+//   "typescriptreact",
+//   "vue",
+//   "html",
+//   "json",
+//   "typescript",
+//   "css"
+// ],
+
+
 module.exports = {
   // 指定脚本运行的环境(预定义的全局变量)
   env: {

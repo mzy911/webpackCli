@@ -1,3 +1,11 @@
-# 忽略使用eslit规则检查文件
-dist
-node_modules 
+
+# 忽略规则
+# /hello/*    // 开头有"/"：匹配相对于.gitignore文件本身的目录级别的
+# hello/      // 结尾"/": 匹配任意级别的hello目录下的所有目录（不包含文件）
+# hello.*     // 匹配以 "hello." 开头的文件或者文件夹
+# hello/*     // 匹配 "hello目录下" 的所有目录和文件
+# !/foo/bar   // 排除目录 foo/bar 之外的所有内容
+
+
+/dist/*
+/node_modules/*

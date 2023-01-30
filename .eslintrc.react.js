@@ -1,3 +1,5 @@
+
+// cnpm i -D eslint typescript eslint-plugin-react @typescript-eslint/parser @typescript-eslint/eslint-plugin
 module.exports = {
   // 继承 react 官方配置
   extends: ["react-app"],
