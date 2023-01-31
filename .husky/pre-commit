@@ -2,3 +2,38 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx lint-staged
+
+
+
+# 1、安装
+#    pnpm install -D husky
+
+
+# 2、配置 prepare 脚本
+#   npm set-script prepare "husky install"
+#   npm run prepare
+# 
+#   {
+#     "scripts": {
+#     "prepare": "husky install"
+#   }
+
+
+# 3、添加 git hooks（ 创建一个 precommit hook ）
+#   npx husky add .husky/pre-commit "npm test"
+#   git add .husky/pre-commit
+
+
+# 4、lint-staged：只检测暂存区的文件
+# 4.1 安装
+#   npm install lint-staged --save-dev
+# 4.2 配置 package.json
+#   "lint-staged": {
+#     "*.{ts,js,vue}": [
+#       "eslint src --fix",
+#       "git add ."
+#     ]
+#   }
+# 4.3 修改 husky（ 设置 precommit 为运行 lint-staged ）
+#   . "$(dirname "$0")/_/husky.sh"
+#   npm run lint-staged
