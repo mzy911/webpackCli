@@ -24,17 +24,23 @@
     "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/preset-env": "^7.19.1",
     "@babel/runtime-corejs3": "^7.20.1",
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.42.1",
     "add-asset-html-webpack-plugin": "^5.0.2",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
+    "commitizen": "^4.3.0",
+    "commitlint-config-cz": "^0.13.3",
     "copy-webpack-plugin": "^11.0.0",
     "core-js": "^3.25.3",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.2.0",
     "csv-loader": "^3.0.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.0.0",
     "eslint": "^8.0.1",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.25.2",
@@ -77,5 +83,13 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/runtime": "^7.20.1",
     "axios": "^1.2.6"
+  },
+  "config": {
+    "commitizen": {
+      "path": [
+        "./node_modules/cz-conventional-changelog",
+        "node_modules/cz-customizable"
+      ]
+    }
   }
 }
