@@ -18,6 +18,7 @@ git commit -m 'feat: auto deploy'
 # git remote add origin https://github.com/mzy911/webpackCli.git
 
 # git push -u origin pages
+git config --global http.version HTTP/1.1
 
 
 git push -f https://github.com/mzy911/webpackCli.git master:pages
