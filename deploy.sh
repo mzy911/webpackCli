@@ -10,9 +10,14 @@ npm run build
 cd dist
 
 git init
-git add .
+git add -A
 git commit -m 'feat: auto deploy'
 
 
 # 将打包后的文件推送到指定分支
-git push -f https://github.com/mzy911/webpackCli.git webpackCli:pages
+# git remote add origin https://github.com/mzy911/webpackCli.git
+
+# git push -u origin pages
+
+
+git push -f https://github.com/mzy911/webpackCli.git master:pages
