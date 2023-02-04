@@ -14,13 +14,12 @@ jobs:
 
       - name: Install and Build # 下载依赖 打包项目
         run: |
-          npm install
-          npm run build
-          sh deploy.sh
+          pnpm install
+          pnpm run build
           
 
-      # - name: Deploy 🚀 # 部署
-        # uses: JamesIves/github-pages-deploy-action@v4.3.3
-        # with:
-          # branch: pages # 部署后提交到的分支
-          # folder: dist # 这里填打包好的目录名称
+      - name: Deploy 🚀 # 部署
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: pages # 部署后提交到的分支
+          folder: dist # 这里填打包好的目录名称
