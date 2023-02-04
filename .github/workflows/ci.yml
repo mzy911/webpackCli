@@ -14,9 +14,8 @@ jobs:
 
       - name: Install and Build # 下载依赖 打包项目
         run: |
-          npm install pnpm
-          pnpm install
-          pnpm run build
+          npm install
+          npm run build
           
 
       - name: Deploy 🚀 # 部署
