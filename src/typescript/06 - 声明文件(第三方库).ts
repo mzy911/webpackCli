@@ -20,13 +20,13 @@
 
 
 // 2、import方式
-//    2.1 安装对应的 types 库
-//        pnpm i @types/jquery -D
+//    2.1 解决直接使用 jquery 报错问题
+//        2.1.1 安装对应的 types 库
+//              pnpm i @types/jquery -D
+//        2.2 声明 declare：types/_missing.ts 
+//              declare module "jquery"
 
-//    2.2 声明 declare(防止红色警告线)：types/_missing.ts 
-//        declare module "jquery"
-
-//    2.3 直接使用
+//    2.2 使用
 //        import jQuery from "jquery"
 //        console.log("JQuery", jQuery("#box")) ;
 

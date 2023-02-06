@@ -11,7 +11,7 @@ declare let foo: string
 
 // 函数形式：jquery
 // declare let jQuery:(param:string) => void
-declare function jQuery(param: string): void
+// declare function jQuery(param: string): void
 
 
 

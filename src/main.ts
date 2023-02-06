@@ -1,7 +1,7 @@
 import jQuery from "jquery"
 
 
-console.log("main.ts 文件", jQuery("#box"))
+console.log("调用jquery文件", jQuery("#box"))
 
 
 
