@@ -38,7 +38,7 @@
     "moduleResolution": "node", // 导入自定义模块：typngs                       
     "baseUrl": "./src", // 跟路径
     "paths": { // 各个模块路径
-      // "*":["node_modules/@types",  "typings/*"],
+      "*":["*"],
       ":module": ["typings/module.d.ts"]
     },                                    
     // "rootDirs": [],  // 构建好的文件存放跟路径                                

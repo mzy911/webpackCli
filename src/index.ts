@@ -1,8 +1,10 @@
-import ts from "./typescript/04 - 泛型"
+import ts from "./typescript/06 - 声明文件(第三方库)"
+// import main from "./main"
 // 对象形式：namespace
 
 
 console.log("ts", ts)
+// console.log("main", main)
 // console.log("jquery", $)
 // console.log("lala", document.getElementById("box"))
 
