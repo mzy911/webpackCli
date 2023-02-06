@@ -118,7 +118,7 @@ module.exports = {
     extensions: [".ts", ".js", "vue", ".jsx", ".json", ".less"],
     // 别称
     alias: {
-      "@": path.resolve(__dirname, "../src")
+      // "@": path.resolve(__dirname, "../src")
     }
   }
 }
