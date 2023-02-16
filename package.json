@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@mzy123/customcomponentlib": "^2.1.0",
+    "@mzy123/customcomponentlib": "^3.0.0",
     "@mzy123/pkg1": "^2.0.1",
     "@mzy123/pkg2": "^2.0.1",
     "@types/react": "^18.0.26",

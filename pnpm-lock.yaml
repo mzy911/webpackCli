@@ -4,7 +4,7 @@ specifiers:
   '@ant-design/icons': ^4.7.0
   '@babel/core': ^7.19.1
   '@babel/preset-env': ^7.19.1
-  '@mzy123/customcomponentlib': ^2.1.0
+  '@mzy123/customcomponentlib': ^3.0.0
   '@mzy123/pkg1': ^2.0.1
   '@mzy123/pkg2': ^2.0.1
   '@pmmmwh/react-refresh-webpack-plugin': ^0.5.8
@@ -59,7 +59,7 @@ specifiers:
 
 dependencies:
   '@ant-design/icons': r2.cnpmjs.org/@ant-design/icons/4.7.0_biqbaboplfbrettd7655fr4n2y
-  '@mzy123/customcomponentlib': registry.npmjs.org/@mzy123/customcomponentlib/2.1.0_biqbaboplfbrettd7655fr4n2y
+  '@mzy123/customcomponentlib': registry.npmjs.org/@mzy123/customcomponentlib/3.0.0_biqbaboplfbrettd7655fr4n2y
   '@mzy123/pkg1': registry.npmjs.org/@mzy123/pkg1/2.0.1
   '@mzy123/pkg2': registry.npmjs.org/@mzy123/pkg2/2.0.1
   '@types/react': 18.0.26
@@ -9884,11 +9884,11 @@ packages:
     dependencies:
       regenerator-runtime: registry.npmjs.org/regenerator-runtime/0.13.10
 
-  registry.npmjs.org/@mzy123/customcomponentlib/2.1.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-DuPE1owDT7QgEeCswtJAAonPZgmVcP1YiwJoW3N5JvjM4DNFuI1k6mLJcQEVJp0meS5dS7EA1mLIKp1p8bt5wQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@mzy123/customcomponentlib/-/customcomponentlib-2.1.0.tgz}
-    id: registry.npmjs.org/@mzy123/customcomponentlib/2.1.0
+  registry.npmjs.org/@mzy123/customcomponentlib/3.0.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-I6d+PTppRuLHtlI8+6Ucud3zCoqKcL0xtV+kpYJV/Ggpw6zYFIb+SnkJHAexIH5AwMxlMTxaQHZYavZOkD0gew==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@mzy123/customcomponentlib/-/customcomponentlib-3.0.0.tgz}
+    id: registry.npmjs.org/@mzy123/customcomponentlib/3.0.0
     name: '@mzy123/customcomponentlib'
-    version: 2.1.0
+    version: 3.0.0
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
