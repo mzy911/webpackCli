@@ -82,6 +82,8 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@babel/runtime": "^7.20.1",
+    "@mzy123/pkg1": "^2.0.1",
+    "@mzy123/pkg2": "^2.0.1",
     "axios": "^1.2.6",
     "jquery": "^3.6.3"
   },

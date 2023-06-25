@@ -1,6 +1,6 @@
 module.exports = {
   config: {
-    host: 'localhost', // 0.0.0.0 同局域网内可以被访问到
+    host: "localhost", // 0.0.0.0 同局域网内可以被访问到
     port: 3000,
     open: false,
     /**
@@ -60,9 +60,9 @@ module.exports = {
     // },
 
     proxy: {
-      '/api': {
-        target: 'http://localhost:5500',
-        pathRewrite: {'^/api': ''}
+      "/api": {
+        target: "http://localhost:5500",
+        pathRewrite: {"^/api": ""}
         // 请求拦截器，可以设置请求等信息
         // bypass: function (req, res, proxyOptions) {
         //   if (req.headers.accept.indexOf('html') !== -1) {

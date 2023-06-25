@@ -1,12 +1,15 @@
 // babel-loader： 在 webpack 里应用 babel 解析 ES6 的桥梁
 
+
 // @babel/core：核心模块
+
 
 // @babel/preset-env：处理新的语法
 // 1、babel 预设，一组预先设定的插件
 //    只转换语法：箭头函数
 //    不转换Api：Promise、async-await
 // 2、结合配置项 useBuiltIns 使用，按需引入 polyfill
+
 
 // @babel/polyfill：处理新的静态、原型方法
 // 1、功能垫片
@@ -20,6 +23,7 @@
 //    b、引入过量的辅助函数
 // 5、由于以上缺点，需要配合 '@babel/plugin-transform-runtime' 使用
 
+
 // @babel/runtime：运行态辅助函数包
 // 1、运行态 "辅助函数" 的npm包
 //    a、转换后的代码上面增加了好几个函数声明，称之为辅助函数
@@ -29,6 +33,7 @@
 //    使用 async/await 时，自动引入 @babel/runtime/regenerator
 //    使用 ES6 的静态事件或内置对象时，自动引入 @babel/runtime/core-js
 //    移除内联babel helpers并替换使用@babel/runtime/helpers 来替换
+
 
 // @babel/plugin-transform-runtime：包含 @babel/runtime、core-js
 // 1、自动引入 @babel/runtime 下的辅助函数（ @babel/runtime/helpers ）
@@ -59,13 +64,14 @@ module.exports = {
         targets: {
           chrome: '80',
           ie: '8'
-          //   esmodules: true // 表示直接转化为ES6模块规范，而不会转码到require
+          // 转化为ES6模块规范、而非require
+          // esmodules: true 
         },
 
         // 是否将 ES 模块语法转换为其他模块类型
         // 1、默认为 auto："amd"、"umd"、"systemjs"、"commonjs"、"cjs"、"auto"、false
         // 2、设置为 false 将保留 ES 模块, require() ==> import ...
-        // 3、Es 模块语法可以用来webpack做tree shaking
+        // 3、Es 模块语法可以用来 webpack 做tree shaking
         modules: false,
 
         // 1、提供 js 的运行环境:3、2

@@ -9,8 +9,8 @@ specifiers:
   '@babel/runtime-corejs3': ^7.20.1
   '@commitlint/cli': ^17.4.2
   '@commitlint/config-conventional': ^17.4.2
-  '@mzy123/pkg1': ^1.1.0
-  '@mzy123/pkg2': ^1.1.0
+  '@mzy123/pkg1': ^2.0.1
+  '@mzy123/pkg2': ^2.0.1
   '@typescript-eslint/eslint-plugin': ^5.50.0
   '@typescript-eslint/parser': ^5.42.1
   add-asset-html-webpack-plugin: ^5.0.2
@@ -69,8 +69,8 @@ specifiers:
 dependencies:
   '@babel/polyfill': 7.12.1
   '@babel/runtime': 7.20.13
-  '@mzy123/pkg1': 1.1.0
-  '@mzy123/pkg2': 1.1.0
+  '@mzy123/pkg1': 2.0.1
+  '@mzy123/pkg2': 2.0.1
   axios: 1.3.2
   jquery: 3.6.3
 
@@ -1776,12 +1776,14 @@ packages:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
     dev: true
 
-  /@mzy123/pkg1/1.1.0:
-    resolution: {integrity: sha512-Ne0BhjD7abgd84H5WzPBM/Rh/MG7jK6bOVekawbn+xD4UBl2CXPnJmS2hTQ0D3SJmS8PxhRhm7IhcA8dFJBNwA==}
+  /@mzy123/pkg1/2.0.1:
+    resolution: {integrity: sha512-EveJA6nbYYP93tKzZtcGCnkrMdvDTe6sVp3qz/g75WEqPjozZtJAXu3jd/N0copdXYCfPSjsVk8ya4WdplUoSg==}
+    dependencies:
+      '@mzy123/pkg2': 2.0.1
     dev: false
 
-  /@mzy123/pkg2/1.1.0:
-    resolution: {integrity: sha512-+X1cfLSMhbT/dFzoM39yZcYL+Lqt/hHfoRiHusvnGO/dPvJuqeZCnnSKuUXqkbwUGc8p+0gveTJcAU3RcN0jSQ==}
+  /@mzy123/pkg2/2.0.1:
+    resolution: {integrity: sha512-Ni2c5SgONMjNPIAoKaYb5+l0QaxljWNMg/6NtdNTxWjU/oSdpvKjQqZ5V3CxBjCxO2v2B3lwEJmHEMYxxuJ4JQ==}
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:

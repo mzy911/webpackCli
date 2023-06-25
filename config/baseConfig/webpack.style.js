@@ -4,27 +4,29 @@
  * 3、不再使用 style-loader
  * 4、需要配置在 plugins 中调用：new MiniCssExtractPlugin(options)
  */
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-let cssExtract = 'style-loader' // 创建style标签 ，插入html中
-if (process.env.NODE_ENV === 'production'){
+let cssExtract = "style-loader" 
+if (process.env.NODE_ENV === "production"){
   cssExtract = MiniCssExtractPlugin.loader
 }
 
 const getStyleLoaders = (pre) => {
   return [
+    // 创建 style 标签插入html中(生成环境使用压缩)
     cssExtract,
-    'css-loader', // 将css资源编译到common.js模块中
+    // 将 Css 文件编译成 Webpack 能识别的模块
+    "css-loader",
     {
       // 解决样式的兼容性问题
-      loader: 'postcss-loader',
+      loader: "postcss-loader",
       options: {
         postcssOptions: {
           plugins: [
             [
-              'postcss-preset-env',
+              "postcss-preset-env",
               {
-                browsers: ['last 3 versions', '> 1%', 'not dead']
+                browsers: ["last 3 versions", "> 1%", "not dead"]
               }
             ]
           ]
@@ -45,12 +47,12 @@ module.exports = {
     // 解析处理less文件（less、less-loader ）
     {
       test: /\.less$/,
-      use: getStyleLoaders('less-loader')
+      use: getStyleLoaders("less-loader")
     },
     // 解析处理sass、scss文件（sass、sass-loader ）
     {
       test: /\.s[ac]ss$/,
-      use: getStyleLoaders('sass-loader')
+      use: getStyleLoaders("sass-loader")
     }
   ]
 }

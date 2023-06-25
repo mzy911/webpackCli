@@ -12,14 +12,14 @@ module.exports = {
     //     loader: 'url-loader', // 依赖 file-loader
     //     options: {
     //       outputPath: 'images', // 指定输出目录：dist/images
-    //       name: '[name]-[hash:4].[ext]', // 打包输出图片名称
-    //       limit: 10 * 1024 // 超出10KB单独打包，会调用file-loader
+    //       name: '[name]-[hash:4].[ext]',
+    //       limit: 10 * 1024
     //     }
     //   }
     // }
 
     /**
-     * webpack5 的配置形式
+     * webpack5 的配置形式(内置了file-load、url-loader、raw-loader)
      *   1、三种形式
      *      a、asset/resource ：等同于 file-loader
      *      b、asset/inline ：等同于 url-loader（默认base64编译）
@@ -65,37 +65,36 @@ module.exports = {
     // 通用资源分类
     {
       test: /\.(png|jpg|gif|txt)$/i,
-      type: 'asset',
+      type: "asset",
       parser: {
         dataUrlCondition: {
           maxSize: 4 * 1024 // 4kb
         }
       }
+      // 可以在 output 统一处理
       // generator: {
-      // 指定文件的输出位置
-      // filename: 'static/images/[hash:10][ext][query]',
-      // 自定义编码算法:默认base64
+      //   // 指定文件的输出位置
+      //   filename: "static/images/[hash:10][ext][query]",
+      //   // 自定义编码算法：默认base64
       //   dataUrl: (content) => {
       //     content = content.toString()
       //     return svgToMiniDataURI(content)
       //   }
       // }
     },
-
     // 处理其他资源
     {
       test: /\.(ttf|woff2?|mp3|mp4)$/i,
-      type: 'asset/resource'
+      type: "asset/resource"
     },
-
     // 处理csv、xml
     {
       test: /\.(csv|tsv)$/i,
-      use: 'csv-loader'
+      use: "csv-loader"
     },
     {
       test: /\.xml$/i,
-      use: 'xml-loader'
+      use: "xml-loader"
     }
 
     /**
