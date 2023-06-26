@@ -1,17 +1,26 @@
+/**
+ * Babel的作用
+ * 1、语法转换、插件 preset-env (高级 --> 低级)
+ * 2、通过 Polyfill 方式在目标环境中添加缺失的功能(扩展Api)
+ * 3、源码转换(模块转化等...)
+ */
+
+
 // babel-loader： 在 webpack 里应用 babel 解析 ES6 的桥梁
 
 
 // @babel/core：核心模块
 
 
-// @babel/preset-env：处理新的语法
+// @babel/preset-env：通过插件处理高级语法
 // 1、babel 预设，一组预先设定的插件
-//    只转换语法：箭头函数
-//    不转换Api：Promise、async-await
+//    1.1 只转换语法：箭头函数
+//    1.2 不转换全局函数和实例方法：Promise、async-await、Array.from | Array.prototype.includes
+//    1.3 由于上一步的缺点，需要引入 polyfill
 // 2、结合配置项 useBuiltIns 使用，按需引入 polyfill
 
 
-// @babel/polyfill：处理新的静态、原型方法
+// @babel/polyfill：处理全局函数、新的静态、原型方法
 // 1、功能垫片
 //    a、包含 core-js 和一个自定义的 regenerator runtime 来模拟完整的 ES2015+ 环境
 //    b、Promise 和 WeakMap、Array.from、Array.prototype.includes(包含静态方法、原型方法)
@@ -24,12 +33,12 @@
 // 5、由于以上缺点，需要配合 '@babel/plugin-transform-runtime' 使用
 
 
-// @babel/runtime：运行态辅助函数包
+// @babel/runtime："运行态"辅助"函数包"
 // 1、运行态 "辅助函数" 的npm包
 //    a、转换后的代码上面增加了好几个函数声明，称之为辅助函数
 //    b、如果每个文件里都有好多被转换的代码，所有文件都会被注入类似的函数
 //    c、@babel/runtime把所有语法转换会用到的辅助函数都集成在了一起
-// 2、不会污染全局 空间和内置对象原型（按需引用） 
+// 2、不会污染全局空间和内置对象原型（按需引用） 
 //    使用 async/await 时，自动引入 @babel/runtime/regenerator
 //    使用 ES6 的静态事件或内置对象时，自动引入 @babel/runtime/core-js
 //    移除内联babel helpers并替换使用@babel/runtime/helpers 来替换
@@ -78,9 +87,10 @@ module.exports = {
         // 2、需要结果 core-js@3 插件使用
         corejs: 3,
 
-        // 作用：控制 polyfill 的加载方式
+        // useBuiltIns ==> 翻译使用内置插件的方式
+        // 作用：决定了 babel 打包时如何处理 @babel/polyfill 语句
         // 1、默认为false，不加载 polyfill
-        // 2、entry：需要手动引入 polyfill 需要的api
+        // 2、entry：需要手动引入 polyfill 需要的 api
         //    1、需要手动引入：require("@babel/polyfill")
         //    2、babel处理后，会引入全部的 polyfill 方法
         //    3、此时版本时 corejs2，如果为 corejs3 会报错
