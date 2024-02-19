@@ -1,3 +1,6 @@
+/**
+ * 处理静态资源
+ */
 module.exports = {
   config: [
     /**
@@ -35,52 +38,25 @@ module.exports = {
      *      b、大于 8kb 默认使用 asset/resource
      *      c、可以通过 parser.dataUrlCondition 自定义大小
      */
-    // {
-    //   test: /\.(svg)$/i,
-    //   type: 'asset/resource',
-    //   generator: {
-    //     // 指定文件的输出位置
-    //     filename: 'static/[hash][ext][query]'
-    //   }
-    // },
-    // {
-    //   test: /\.(png)$/i,
-    //   type: 'asset/inline',
-    //   generator: {
-    //     // 自定义编码算法
-    //     dataUrl: (content) => {
-    //       content = content.toString()
-    //       return svgToMiniDataURI(content)
-    //     }
-    //   }
-    // },
-    // {
-    //   test: /\.txt/,
-    //   type: 'asset/resource',
-    //   generator: {
-    //     // 指定文件的输出位置
-    //     filename: 'static/[hash][ext][query]'
-    //   }
-    // },
     // 通用资源分类
     {
       test: /\.(png|jpg|gif|txt)$/i,
-      type: "asset",
+      type: "asset", // asset/resource ｜ asset/inline ｜ asset/resource
       parser: {
         dataUrlCondition: {
           maxSize: 4 * 1024 // 4kb
         }
-      }
+      },
       // 可以在 output 统一处理
-      // generator: {
-      //   // 指定文件的输出位置
-      //   filename: "static/images/[hash:10][ext][query]",
-      //   // 自定义编码算法：默认base64
-      //   dataUrl: (content) => {
-      //     content = content.toString()
-      //     return svgToMiniDataURI(content)
-      //   }
-      // }
+      generator: {
+        // 指定文件的输出位置
+        filename: "static/images/[hash:10][ext][query]",
+        // 自定义编码算法：默认base64
+        dataUrl: (content) => {
+          content = content.toString()
+          return svgToMiniDataURI(content)
+        }
+      }
     },
     // 处理其他资源
     {

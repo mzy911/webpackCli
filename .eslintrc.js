@@ -44,24 +44,31 @@ module.exports = {
   },
 
   /**
-   * 解析器：默认'Espree'
-   * @value：Esprima
-   * @value：Babel-ESLint: 一个对Babel解析器的包装，使其能够与 ESLint 兼容
+   * ESTree 转换检验器
+   * 1、将代码转换为 ESTree
+   * 2、ESLint 会对 ESTree 进行校验
+   * 3、ESTree 只是一个 AST 的某一种规范，ESTree 本质上还是 AST
+   * @value：Esprima：默认只转换 js
+   * @value：@babel/eslint-parser
+   *   1、允许你使用 ESLint 校验所有 babel code
+   *   2、babel 的解析器会把你的 code 转换为 AST，该解析器会将其转换为 ESLint 能懂的 ESTree
    * @value：@typescript-eslint/parser：将 TypeScript 转换成与 estree 兼容的形式
+   *   1、ESLint 默认的 parser 会将代码转换为 AST（ESTree）
+   *   2、ESTree 默认的 parser 会将源码转换为 AST（TSTree）
+   *   3、@typescript-eslint 目的是兼容前两者的 “AST”
    */
   parser: "@typescript-eslint/parser",
 
-  // 模块的解析规则
+  // 指定解析器选项
   parserOptions: {
-    ecmaVersion: "latest", // 按照哪个js版本解析规则：，默认 3，5 使用const报错
-    sourceType: "module", // 模块化：es module
-    ecmaFeatures: {
+    ecmaVersion: "latest", // 指定 ECMAScript 版本：，默认 3，5 使用const报错
+    sourceType: "module", // 指定要解析的代码是模块化代码还是脚本代码，默认为 "script"，可选值为 "module"
+    ecmaFeatures: { // 指定要启用的 JavaScript 语言特性
       globalReturn: true, //  允许在全局作用域下使用 return 语句
       impliedStrict: true, // 启用全局严格模式（ ecmaVersion >= 5）
       jsx: true // 启用 jsx 语法（react）中
     } 
   },  
-
 
   // 继承语法规则（  别人定义好的 ）
   extends: [

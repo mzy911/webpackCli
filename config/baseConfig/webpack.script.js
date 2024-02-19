@@ -25,7 +25,7 @@ const getScriptLoaders = (pre) => {
     // 接受、处理传入的loader(如：ts-loader)
     pre
 
-    // webpack4中使用loader、webpack5中使用plugin
+    // 1、webpack4中使用loader 2、webpack5中使用plugin
     // {
     //   loader: 'eslint-loader',
     //   enforce: "pre",
@@ -50,7 +50,6 @@ module.exports = {
       test: /\.d\.ts$|\.ts$/,
       use: getScriptLoaders("ts-loader")
     }
-    
    
     // 给某个某块提供 window 对象
     // {
