@@ -1,67 +1,89 @@
 /**
  * Babel的作用
- * 1、语法转换、插件 preset-env (高级 --> 低级)
- * 2、通过 Polyfill 方式在目标环境中添加缺失的功能(扩展Api)
- * 3、源码转换(模块转化等...)
+ * 1、默认情况下 Babel 只会做语法转换(let、const、class、箭头函数等)
+ * 2、不做新 api 的转换（分为两类）、需要借助 polyfill 解析
+ *   a、全局对象和全局对象相关的方法，例如 Promise、Map、Set、Object.assign......
+ *   b、实例的新方法，例如数组的 find、flat 等等......
  */
 
 
-// babel-loader： 在 webpack 里应用 babel 解析 ES6 的桥梁
+/**
+ * 1、@babel/core：核心模块
+ * 2、babel-loader： 在 webpack 中是 babel 解析 ES6 的桥梁
+ */
 
 
-// @babel/core：核心模块
+/**
+ * 
+ * @babel/polyfill：垫片 - 模拟完整的 ES2015+ 环境（更改扩展原型）
+ * 1、功能垫片( 模拟环境 )
+ * 2、变更
+ *   a、在 babel 7.4 之前，只需要安装 @babel/polyfill 这个包就可以了
+ *   b、从 7.4 版本开始，虽然 @babel/polyfill 还会更新，
+ *      但它内部的 core-js 包版将一直使用 2.x，
+ *      无法使用 core-js 3.x 中新增的补丁代码（例如：数组的 includes 方法）
+ *   c、官方建议直接安装 core-js 和 regenerator-runtime 这两个包
+ * 2、缺点：
+ *   a、更改原型
+ *   b、引入过量的辅助函数
+ * 3、由于以上缺点，需要配合 '@babel/plugin-transform-runtime' 使用
+ */
 
 
-// @babel/preset-env：通过插件处理高级语法
-// 1、babel 预设，一组预先设定的插件
+/**
+ * @babel/preset-env：通过插件处理高级语法
+ */
+// 1、预设一组预先设定的插件
 //    1.1 只转换语法：箭头函数
 //    1.2 不转换全局函数和实例方法：Promise、async-await、Array.from | Array.prototype.includes
 //    1.3 由于上一步的缺点，需要引入 polyfill
 // 2、结合配置项 useBuiltIns 使用，按需引入 polyfill
 
 
-// @babel/polyfill：处理全局函数、新的静态、原型方法
-// 1、功能垫片
-//    a、包含 core-js 和一个自定义的 regenerator runtime 来模拟完整的 ES2015+ 环境
-//    b、Promise 和 WeakMap、Array.from、Array.prototype.includes(包含静态方法、原型方法)
-//    c、polyfill 将添加到全局范围（glob）和类似 String 这样的原生原型（prototypes）
-// 2、应用到 "生产环境"
-// 3、从 Babel 7.4.0 版本开始不建议使用了，建议直接包含 core-js/stable
-// 4、缺点：
-//    a、更改原型
-//    b、引入过量的辅助函数
-// 5、由于以上缺点，需要配合 '@babel/plugin-transform-runtime' 使用
+/**
+ * regenerator-runtime：提供独立的函数的运行时，es5 环境下的 es6 的 generator 实现
+ * 1、包含 regenerator 模块。 生成器函数（function*(),yeil）、async、await函数.
+ */
 
 
-// @babel/runtime："运行态"辅助"函数包"
-// 1、运行态 "辅助函数" 的npm包
-//    a、转换后的代码上面增加了好几个函数声明，称之为辅助函数
-//    b、如果每个文件里都有好多被转换的代码，所有文件都会被注入类似的函数
-//    c、@babel/runtime把所有语法转换会用到的辅助函数都集成在了一起
-// 2、不会污染全局空间和内置对象原型（按需引用） 
-//    使用 async/await 时，自动引入 @babel/runtime/regenerator
-//    使用 ES6 的静态事件或内置对象时，自动引入 @babel/runtime/core-js
-//    移除内联babel helpers并替换使用@babel/runtime/helpers 来替换
+/**
+ * @babel/helpers：定义了一些处理新的语法关键字的辅助函数
+ * 1、@babel/core 在处理的时候也会向代码中插入帮助函数，它的处理方法是在每个文件中都插入相应的帮助函数
+ * 2、@babel/helpers 则是把帮助函数当做模块引入，每个文件只需要调用这个模块就可以了
+ */
 
 
-// @babel/plugin-transform-runtime：包含 @babel/runtime、core-js
+/**
+ * @babel/runtime："运行态" 辅助 "函数包"(类似于_createClass辅助函数库集合)
+ * 1、目前包含三个版本
+      @babel/runtime
+      @babel/runtime-corejs2：仅支持全局变量(如promise)和静态属性(Array.from)
+      @babel/runtime-corejs3：新增支持实例属性([].includes())
+      分别适合于 @babel/plugin-transform-runtime 的 core-js 的设置：corejs: false｜2｜3, 
+ * 2、包含模块化 runtime helpers 和 regenerator-runtime 两个库
+ */
+
+
+/**
+ * @babel/plugin-transform-runtime：包含 @babel/runtime、core-js、引入垫片的时候借助的插件
+ */
 // 1、自动引入 @babel/runtime 下的辅助函数（ @babel/runtime/helpers ）
 //    例如使用class类函数：class Person {}
 //    a、使用 plugin-transform-runtime
 //    var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 //    var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 //    var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-//    b、不使用plugin-transform-runtime，每个文件内都会有此方法
+//    b、不使用 plugin-transform-runtime，每个文件内都会有此方法
 //    function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 //    function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 //    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-// 2、当代码里使用了core-js的API
+// 2、当代码里使用了 core-js 的API
 //    自动引入@babel/runtime-corejs3/core-js-stable/
 //    以此来替代全局引入的core-js/stable;
-// 3、当代码里使用了Generator/async函数
+// 3、当代码里使用了 Generator/async函数
 //    自动引入@babel/runtime/regenerator
 //    以此来替代全局引入的regenerator-runtime/runtime；
-// 4、作用2和3其实是在做API转换，对内置对象进行重命名，以防止污染全局环境
+// 4、此转换器的另一个用途是为您的代码创建沙盒环境，避免污染全局
 
 module.exports = {
   presets: [
@@ -69,7 +91,7 @@ module.exports = {
       // 预设一堆插件：
       '@babel/preset-env',
       {
-        // 转码之后，要兼容的浏览器
+        // 转码之后要兼容的浏览器及版本
         targets: {
           chrome: '80',
           ie: '8'
@@ -110,17 +132,14 @@ module.exports = {
   ],
   plugins: [
     [
+      // 只有配置 @babel/plugin-transform-runtime 才会使用 @babel/runtime
       // 1、包含 @babel/runtime、core-js
       // 2、动态引入 @babel/runtime 下的辅助函数
       '@babel/plugin-transform-runtime',
       {
-        // 需要结合 @babel/runtime-corejs3 插件使用
-        // 1、作用2和3其实是在做API转换，对内置对象进行重命名；避免污染全局
-        // 2、corejs
-        //    不使用时：promise 挂在到window上 require("core-js/modules/es6.promise.js");
-        //    使用后：var _promise = _interopRequireDefault(require("@babel/runtime-corejs3/core-js-stable/promise"));
+        // 设定版本
         corejs: {
-          version: 3 // 优先级高于，preset-env的corejs
+          version: 3 // 优先级高于，preset-env 的 corejs
         }
       }
       // {

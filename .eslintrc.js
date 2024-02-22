@@ -44,20 +44,20 @@ module.exports = {
   },
 
   /**
-   * ESTree 转换检验器
-   * 1、将代码转换为 ESTree
-   * 2、ESLint 会对 ESTree 进行校验
-   * 3、ESTree 只是一个 AST 的某一种规范，ESTree 本质上还是 AST
-   * @value：Esprima：默认只转换 js
-   * @value：@babel/eslint-parser
-   *   1、允许你使用 ESLint 校验所有 babel code
-   *   2、babel 的解析器会把你的 code 转换为 AST，该解析器会将其转换为 ESLint 能懂的 ESTree
-   * @value：@typescript-eslint/parser：将 TypeScript 转换成与 estree 兼容的形式
-   *   1、ESLint 默认的 parser 会将代码转换为 AST（ESTree）
-   *   2、ESTree 默认的 parser 会将源码转换为 AST（TSTree）
-   *   3、@typescript-eslint 目的是兼容前两者的 “AST”
+   * 指定要校验的代码：
+   * 1、parser 会将代码转换为 ESTree(AST 抽象语法树)
+   * 2、ESLint 只会对 ESTree 进行校验
+   * 3、三种代码的转换方式
+   *   @value：Espree：默认只转换 js
+   *   @value：@babel/eslint-parser
+   *     1、允许你使用 ESLint 校验所有 babel code
+   *     2、babel 的解析器会把你的 code 转换为 AST，该解析器会将其转换为 ESLint 能懂的 ESTree
+   *   @value：@typescript-eslint/parser：将 TypeScript 转换成与 estree 兼容的形式
+   *     1、ESLint 默认的 parser 会将代码转换为 AST（ESTree）
+   *     2、ESTree 默认的 parser 会将源码转换为 AST（TSTree）
+   *     3、@typescript-eslint 目的是兼容前两者的 “AST”
    */
-  parser: "@typescript-eslint/parser",
+  parser: "@babel/eslint-parser",
 
   // 指定解析器选项
   parserOptions: {
