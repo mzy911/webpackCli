@@ -1,3 +1,15 @@
 # 忽略git文件
 dist
 node_modules
+.idea
+.idea/node_modules
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/dataSources.local.xml
+.idea/dataSources.xml
+.idea/dataSources/
+.idea/dataSources/dataSources.local.xml
+.idea/dataSources/dataSources.xml
+.idea/dataSources/dataSources.xml.xml
+.idea/dataSources/dataSources.local.xml.xml
+.idea/dataSources/dataSources.local.xml.xml.xml
